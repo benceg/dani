@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { api, Predicates } from 'prismic.io';
+import { api } from 'prismic.io';
 
 import logo from './logo.svg';
 import './App.css';
+
+import HomePage from './components/HomePage'
 
 class App extends Component {
 
@@ -15,16 +17,20 @@ class App extends Component {
 
   componentDidMount() {
     api('https://daniellebooysen-test.prismic.io/api')
-      .then(api => api.query(Predicates.at('document.type', 'albums')))
-      // .then(api => api.query(Predicates.at('my.albums.uid', 'new-story')))
-      .then(response => this.setState({posts: response.results}));
+      .then(api => api.query('[[:d = at(document.type, "home")]]', {
+          pageSize: 1,
+          orderings: '[my.home.date desc]'
+      }))
+      .then(response => this.setState({posts: response.results}))
   }
 
   render() {
     const {
       posts
     } = this.state
+
     console.log(posts)
+
     return (
       <div className="App">
         <div className="App-header">
@@ -35,9 +41,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <ul>
-          {posts.map(post =>
-            <li key={post.id}>{post.getText('albums.title')}</li>
-          )}
+          <HomePage content={(posts.length ? posts[0] : {})} />
         </ul>
       </div>
     );
