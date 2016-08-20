@@ -8,7 +8,7 @@ const initialState = {
   homePageContent: {}
 }
 
-export default function homePageReducers(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_HOME_PAGE_CONTENT:
       return {...state, loadingHomePageContent: action.loadingHomePageContent}
