@@ -3,29 +3,29 @@ import { api } from 'prismic.io'
 export const LOADING_HOME_PAGE_CONTENT = 'LOADING_HOME_PAGE_CONTENT'
 export const RECEIVE_HOME_PAGE_CONTENT = 'RECEIVE_HOME_PAGE_CONTENT'
 
-export function fetchHomePageContent() {
+export function fetchContent() {
   return (dispatch) => {
-    dispatch(requestHomePageContent())
-    api('https://daniellebooysen-test.prismic.io/api')
+    dispatch(requestContent())
+    return api('https://daniellebooysen-test.prismic.io/api')
       .then(api => api.query('[[:d = at(document.type, "home")]]', {
         pageSize: 1,
         orderings: '[my.home.date desc]'
       }))
-      .then(response => dispatch(receiveHomePageContent(response.results)))
+      .then(response => dispatch(receiveContent(response.results)))
   }
 }
 
-export function requestHomePageContent() {
+export function requestContent() {
   return {
     type: LOADING_HOME_PAGE_CONTENT,
-    loadingHomePageContent: true
+    loaded: false
   }
 }
 
-export function receiveHomePageContent(content) {
+export function receiveContent(content) {
   return {
     type: RECEIVE_HOME_PAGE_CONTENT,
-    loadingHomePageContent: false,
-    homePageContent: content
+    loaded: true,
+    content: content[0]
   }
 }

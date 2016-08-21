@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
+import { reducer as reduxAsyncConnect } from 'redux-connect';
 
-import homePageReducers from './components/HomePage/reducers';
+import homePage from './components/HomePage/reducers';
 
 export default combineReducers({
-  homePageReducers,
+  homePage,
+  reduxAsyncConnect,
   routing: routerReducer
 });

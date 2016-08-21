@@ -1,21 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
-import { Router, IndexRoute, Route, browserHistory } from 'react-router'
-import { syncHistoryWithStore } from 'react-router-redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { ReduxAsyncConnect } from 'redux-connect'
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
+import { Provider } from 'react-redux';
+import { Router, IndexRoute, Route, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
-import reducers from './reducers'
-import routes from './routes'
+import reducers from './reducers';
+import routes from './routes';
 
-import App from './App';
+const createStoreWithMiddleware = applyMiddleware(
+  thunkMiddleware,
+  createLogger()
+)(createStore);
 
-const store = createStore(reducers)
-const history = syncHistoryWithStore(browserHistory, store)
+const store = createStoreWithMiddleware(reducers);
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <Router render={props => <ReduxAsyncConnect {...props}/>} history={history}>
       {routes}
     </Router>
   </Provider>,

@@ -4,16 +4,16 @@ import {
 } from './actions'
 
 const initialState = {
-  loadingHomePageContent: false,
-  homePageContent: {}
+  loaded: false,
+  content: {}
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_HOME_PAGE_CONTENT:
-      return {...state, loadingHomePageContent: action.loadingHomePageContent}
+      return {...state, loading: action.loading}
     case RECEIVE_HOME_PAGE_CONTENT:
-      return {...state, loadingHomePageContent: action.loadingHomePageContent, homePageContent: action.homePageContent}
+      return {...state, loading: action.loading, content: action.content}
     default:
       return state
   }

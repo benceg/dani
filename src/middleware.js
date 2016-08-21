@@ -1,11 +1,16 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 
 import reducers from './reducers';
 import routes from './routes';
+
+const createStoreWithMiddleware = applyMiddleware(
+	thunkMiddleware
+)(createStore)
 
 export default (req, res) => {
 	match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
@@ -37,7 +42,7 @@ export default (req, res) => {
 						</header>
 						<body>
 							<div id='app'>${renderToString(
-								<Provider store={createStore(reducers)}>
+								<Provider store={createStoreWithMiddleware(reducers)}>
 									<RouterContext {...renderProps} />
 								</Provider>
 							)}</div>

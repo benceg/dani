@@ -1,23 +1,44 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { asyncConnect } from 'redux-connect';
 
-export default function HomePage(props) {
+import {
+  fetchContent
+} from './actions'
 
-  const { content } = props
+@asyncConnect([{
+  promise: ({store: {dispatch, getState}}) => dispatch(fetchContent())
+  // {
+    // const promises = [];
+    // if (!getState().homePage.loaded) promises.push(dispatch(fetchContent()));
+    // return Promise.all(promises);
+    // dispatch(fetchContent())
+  // }
+}])
+@connect(state => ({
+  loading: state.homePage.loading,
+  content: state.homePage.content
+}))
+export default class HomePage extends Component {
 
-  if (!content.uid) return <div/>
+  render() {
+    const {
+      content
+    } = this.props
 
-  const title = content.getText('home.title')
-  const body = content.getHtml('home.body')
-  const thumbnail = content.getImage('home.photo').views.small.url
-  const photo = content.getImage('home.photo').main.url
+    const title = content.getText('home.title')
+    const body = content.getHtml('home.body')
+    const thumbnail = content.getImage('home.photo').views.small.url
+    const photo = content.getImage('home.photo').main.url
 
-  return (
-    <li key={content.id}>
-      <div>Title: {title}</div>
-      <div>Thumbnail: {thumbnail}</div>
-      <div>Photo: {photo}</div>
-      <div dangerouslySetInnerHTML={{__html: body}}></div>
-    </li>
-  )
+    return (
+      <li key={content.id}>
+        <div>Title: {title}</div>
+        <div>Thumbnail: {thumbnail}</div>
+        <div>Photo: {photo}</div>
+        <div dangerouslySetInnerHTML={{__html: body}}></div>
+      </li>
+    )
+  }
 
 }
