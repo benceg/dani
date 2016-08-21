@@ -23,21 +23,21 @@ export default class HomePage extends Component {
 
   render() {
     const {
-      content
-    } = this.props
-
-    const title = content.getText('home.title')
-    const body = content.getHtml('home.body')
-    const thumbnail = content.getImage('home.photo').views.small.url
-    const photo = content.getImage('home.photo').main.url
+      id,
+      title,
+      body,
+      thumbnail,
+      photo
+    } = this.props.content
 
     return (
-      <li key={content.id}>
+      <div>
+        <div>ID: {id}</div>
         <div>Title: {title}</div>
-        <div>Thumbnail: {thumbnail}</div>
-        <div>Photo: {photo}</div>
+        <div>Thumbnail: <img src={thumbnail} /></div>
+        <div>Photo: <img src={photo} /></div>
         <div dangerouslySetInnerHTML={{__html: body}}></div>
-      </li>
+      </div>
     )
   }
 

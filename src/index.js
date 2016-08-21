@@ -5,7 +5,7 @@ import { ReduxAsyncConnect } from 'redux-connect'
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
-import { Router, IndexRoute, Route, browserHistory } from 'react-router';
+import { Router, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import reducers from './reducers';
@@ -16,7 +16,7 @@ const createStoreWithMiddleware = applyMiddleware(
   createLogger()
 )(createStore);
 
-const store = createStoreWithMiddleware(reducers);
+const store = createStoreWithMiddleware(reducers, window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(

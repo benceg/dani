@@ -26,6 +26,12 @@ export function receiveContent(content) {
   return {
     type: RECEIVE_HOME_PAGE_CONTENT,
     loaded: true,
-    content: content[0]
+    content: {
+      id: content[0].id || null,
+      title: content[0].getText('home.title') || null,
+      body: content[0].getHtml('home.body') || null,
+      thumbnail: content[0].getImage('home.photo').views.small.url || null,
+      photo: content[0].getImage('home.photo').main.url || null
+    }
   }
 }
