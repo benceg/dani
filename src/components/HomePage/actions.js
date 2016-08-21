@@ -28,6 +28,7 @@ export function receiveContent(content) {
     loaded: true,
     content: {
       id: content[0].id || null,
+      uri: content[0].uid,
       title: content[0].getText('home.title') || null,
       body: content[0].getHtml('home.body') || null,
       thumbnail: content[0].getImage('home.photo').views.small.url || null,
