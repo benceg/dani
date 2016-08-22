@@ -1,7 +1,8 @@
-import { api } from 'prismic.io'
+import { api } from 'prismic.io';
+import { head } from 'lodash';
 
-export const LOADING_HOME_PAGE_CONTENT = 'LOADING_HOME_PAGE_CONTENT'
-export const RECEIVE_HOME_PAGE_CONTENT = 'RECEIVE_HOME_PAGE_CONTENT'
+export const LOADING_HOME_PAGE_CONTENT = 'LOADING_HOME_PAGE_CONTENT';
+export const RECEIVE_HOME_PAGE_CONTENT = 'RECEIVE_HOME_PAGE_CONTENT';
 
 export function fetchContent() {
   return (dispatch) => {
@@ -26,13 +27,6 @@ export function receiveContent(content) {
   return {
     type: RECEIVE_HOME_PAGE_CONTENT,
     loaded: true,
-    content: {
-      id: content[0].id || null,
-      uri: content[0].uid,
-      title: content[0].getText('home.title') || null,
-      body: content[0].getHtml('home.body') || null,
-      thumbnail: content[0].getImage('home.photo').views.small.url || null,
-      photo: content[0].getImage('home.photo').main.url || null
-    }
+    content: head(content)
   }
 }

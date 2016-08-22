@@ -1,12 +1,12 @@
 import {
   LOADING_HOME_PAGE_CONTENT,
   RECEIVE_HOME_PAGE_CONTENT
-} from './actions'
+} from './actions';
 
 const initialState = {
   loaded: false,
   content: {}
-}
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
