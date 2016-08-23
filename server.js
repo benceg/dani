@@ -36,6 +36,6 @@ app.listen(port, ip, (err) => {
 	if(err) {
 		console.error(err);
 	} else {
-		console.info(`Listening at ${domain}:${port}`);
+		console.info(`Listening at ${ip}:${port}`);
 	}
 });
