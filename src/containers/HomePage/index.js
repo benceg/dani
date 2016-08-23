@@ -9,6 +9,8 @@ import {
   fetchContent
 } from './actions';
 
+import LazyImage from 'lazyimage';
+
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => dispatch(fetchContent())
 }])
@@ -35,12 +37,23 @@ export default class HomePage extends Component {
 
     return (
       <div>
+
         <div>ID: {getParameter('id')}</div>
+
         <div>URI: {getParameter('uid')}</div>
+
         <div>Title: {getText('home.title')}</div>
-        <div>Thumbnail: <img src={get(getImage('home.photo'), 'views.small.url')} /></div>
-        <div>Photo: <img src={get(getImage('home.photo'), 'main.url')} /></div>
+
+        <LazyImage
+          blurRadius={40}
+          width={get(getImage('home.photo'), 'views.fullhd.width')}
+          height={get(getImage('home.photo'), 'views.fullhd.height')}
+          src={get(getImage('home.photo'), 'views.fullhd.url')}
+          low={get(getImage('home.photo'), 'views.loading.url')}
+        />
+
         <div dangerouslySetInnerHTML={{__html: getHtml('home.body')}}></div>
+
       </div>
     )
 
