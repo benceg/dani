@@ -11,9 +11,9 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOADING_HOME_PAGE_CONTENT:
-      return {...state, loading: action.loading}
+      return {...state, loaded: action.loaded}
     case RECEIVE_HOME_PAGE_CONTENT:
-      return {...state, loading: action.loading, content: action.content}
+      return {...state, loaded: action.loaded, content: action.content}
     default:
       return state
   }

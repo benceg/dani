@@ -1,5 +1,5 @@
 import { api } from 'prismic.io';
-import { head } from 'lodash';
+import head from 'lodash/head';
 
 export const LOADING_HOME_PAGE_CONTENT = 'LOADING_HOME_PAGE_CONTENT';
 export const RECEIVE_HOME_PAGE_CONTENT = 'RECEIVE_HOME_PAGE_CONTENT';
@@ -13,6 +13,7 @@ export function fetchContent() {
         orderings: '[my.home.date desc]'
       }))
       .then(response => dispatch(receiveContent(response.results)))
+      .catch(error => console.error(error))
   }
 }
 

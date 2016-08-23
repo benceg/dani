@@ -1,17 +1,13 @@
+import get from 'lodash/get';
+
 import {
   WithFragments,
   Document
 } from 'prismic.io/lib/documents';
 
-import {
-  get
-} from 'lodash';
+export default function prismic(doc) {
 
-export default ctx => {
-
-  if (!ctx instanceof Document) {
-    return console.error('ctx is not a Prismic Document instance');
-  }
+  const ctx = (!(doc instanceof Document) ? new Document(doc.id, doc.uid, doc.type, doc.href, doc.tags, doc.slugs, doc.data) : doc)
 
   return {
     getParameter: (arg) => get(ctx, arg) || null,
