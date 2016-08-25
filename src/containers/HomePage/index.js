@@ -1,39 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
-import get from 'lodash/get'
+import get from 'lodash/get';
 
-import prismic from '../../helpers/prismic'
+import prismic from '../../helpers/prismic';
 
-import {
-  fetchContent
-} from './actions';
+import { fetchContent } from './actions';
 
-import LazyImage from 'lazyimage';
-
-@asyncConnect([{
-  promise: ({store: {dispatch, getState}}) => dispatch(fetchContent())
-}])
-
-@connect(state => ({
-  loading: state.homePage.loading,
-  content: state.homePage.content
-}))
-
-export default class HomePage extends Component {
+class HomePage extends Component {
 
   render() {
 
     const {
       content
-    } = this.props
+    } = this.props;
 
     const {
       getParameter,
       getText,
       getImage,
       getHtml
-    } = prismic(content)
+    } = prismic(content);
 
     return (
       <div>
@@ -44,19 +31,28 @@ export default class HomePage extends Component {
 
         <div>Title: {getText('home.title')}</div>
 
-        <LazyImage
-          blurRadius={40}
+        <img
           width={get(getImage('home.photo'), 'views.fullhd.width')}
           height={get(getImage('home.photo'), 'views.fullhd.height')}
           src={get(getImage('home.photo'), 'views.fullhd.url')}
-          low={get(getImage('home.photo'), 'views.loading.url')}
         />
 
         <div dangerouslySetInnerHTML={{__html: getHtml('home.body')}}></div>
 
       </div>
-    )
+    );
 
   }
 
 }
+
+const mapStateToProps = (state) => ({
+  loading: state.homePage.loading,
+  content: state.homePage.content
+})
+
+export default asyncConnect([{
+  promise: ({ store: { dispatch } }) => dispatch(fetchContent())
+}])(connect(
+  mapStateToProps
+)(HomePage));

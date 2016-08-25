@@ -1,7 +1,7 @@
 import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
-import middleware from './src/middleware';
+import middleware from './middleware';
 
 const app = express();
 
@@ -9,7 +9,7 @@ const ip = process.env.IP || '0.0.0.0';
 const port = process.env.PORT || 3000;
 
 if(process.env.NODE_ENV === 'development') {
-	const config = require('./webpack.config.dev');
+	const config = require('../webpack.config.dev');
 	const compiler = webpack(config);
 	app.use(require('webpack-dev-middleware')(compiler, {
 		noInfo: true,
