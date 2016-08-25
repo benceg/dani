@@ -1,43 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
+import head from 'lodash/head';
 import get from 'lodash/get';
 
-import prismic from '../../helpers/prismic';
-
 import { fetchContent } from './actions';
+
+import ReactMarkdown from 'react-markdown';
 
 class HomePage extends Component {
 
   render() {
 
     const {
+      loaded,
       content
     } = this.props;
 
     const {
-      getParameter,
-      getText,
-      getImage,
-      getHtml
-    } = prismic(content);
+      body,
+      image,
+      slug,
+      title
+    } = content;
 
     return (
       <div>
 
-        <div>ID: {getParameter('id')}</div>
+        <div>Title: {title}</div>
 
-        <div>URI: {getParameter('uid')}</div>
+        <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
 
-        <div>Title: {getText('home.title')}</div>
-
-        <img
-          width={get(getImage('home.photo'), 'views.fullhd.width')}
-          height={get(getImage('home.photo'), 'views.fullhd.height')}
-          src={get(getImage('home.photo'), 'views.fullhd.url')}
-        />
-
-        <div dangerouslySetInnerHTML={{__html: getHtml('home.body')}}></div>
+        <ReactMarkdown source={body || ''} escapeHtml={true} />
 
       </div>
     );
