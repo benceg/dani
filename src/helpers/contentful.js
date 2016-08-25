@@ -5,4 +5,4 @@ const client = contentful.createClient({
   accessToken: 'fba1869143fff7e256ec15c58b18fb2b0d9efc66c3ed102f8765be4e0b25eea2'
 });
 
-export default const;
+export default client;
