@@ -27,7 +27,7 @@ if(process.env.NODE_ENV === 'development') {
 	app.use(require('webpack-hot-middleware')(compiler));
 	app.use(express.static(path.resolve(__dirname, 'src')));
 } else if(process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.resolve(__dirname, 'dist')));
+	app.use(express.static(path.resolve(__dirname, '../dist')));
 }
 
 app.get('*', middleware);
