@@ -1,47 +1,48 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 import get from 'lodash/get'
 
 import { fetchContent } from './actions';
 
-export default class Releases extends Component {
+export default function Releases(props) {
 
-  render() {
+  const {
+    content
+  } = props;
 
-    const {
-      content
-    } = this.props;
+  return (
+    <ul>
+      {content.map(item => {
 
-    return (
-      <ul>
-        {content.map(item => {
+        const {
+          slug,
+          title
+        } = item.fields;
 
-          const {
-            slug,
-            title
-          } = item.fields;
+        return (
+          <li key={slug}>{title}</li>
+        );
 
-          return (
-            <li key={slug}>{title}</li>
-          );
-
-        })}
-      </ul>
-    )
-
-  }
+      })}
+    </ul>
+  )
 
 }
 
+Releases.propTypes = {
+  loaded: React.PropTypes.bool.isRequired,
+  content: React.PropTypes.array.isRequired
+};
 
-const mapStateToProps = (state) => ({
-  loading: state.releases.loading,
-  content: state.releases.content
-})
+const mapStateToProps = ({ releases }) => ({
+  loading: releases.loading,
+  content: releases.content
+});
 
-export default asyncConnect([{
-  promise: ({ store: { dispatch } }) => dispatch(fetchContent())
-}])(connect(
+export default asyncConnect(
+  [{
+    promise: ({ store: { dispatch } }) => dispatch(fetchContent())
+  }],
   mapStateToProps
-)(Releases));
+)(Releases);

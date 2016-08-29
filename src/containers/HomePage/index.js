@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 import head from 'lodash/head';
@@ -8,45 +8,49 @@ import { fetchContent } from './actions';
 
 import ReactMarkdown from 'react-markdown';
 
-class HomePage extends Component {
+export default function HomePage(props) {
 
-  render() {
+  const {
+    loaded,
+    body,
+    image,
+    slug,
+    title
+  } = props;
 
-    const {
-      loaded,
-      content
-    } = this.props;
+  return (
+    <div>
 
-    const {
-      body,
-      image,
-      slug,
-      title
-    } = content;
+      <div>Title: {title}</div>
 
-    return (
-      <div>
+      <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
 
-        <div>Title: {title}</div>
+      <ReactMarkdown source={body || ''} escapeHtml={true} />
 
-        <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
-
-        <ReactMarkdown source={body || ''} escapeHtml={true} />
-
-      </div>
-    );
-
-  }
+    </div>
+  );
 
 }
 
-const mapStateToProps = (state) => ({
-  loading: state.homePage.loading,
-  content: state.homePage.content
-})
+HomePage.propTypes = {
+  loaded: React.PropTypes.bool.isRequired,
+  body: React.PropTypes.string,
+  image: React.PropTypes.object,
+  slug: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired
+};
 
-export default asyncConnect([{
-  promise: ({ store: { dispatch } }) => dispatch(fetchContent())
-}])(connect(
+const mapStateToProps = ({ homePage }) => ({
+  loaded: homePage.loaded,
+  body: homePage.content.body,
+  image: homePage.content.image,
+  slug: homePage.content.slug,
+  title: homePage.content.title
+});
+
+export default asyncConnect(
+  [{
+    promise: ({ store: { dispatch } }) => dispatch(fetchContent())
+  }],
   mapStateToProps
-)(HomePage));
+)(HomePage);
