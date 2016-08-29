@@ -7,7 +7,7 @@
     "lint": "eslint ./src",
     "dev": "cross-env NODE_ENV=development babel-node ./src/server.js",
     "build:client": "rimraf dist && webpack --config ./webpack.config.prod.js",
-    "build:server": "rimraf runtime && babel src -d ./runtime",
+    "build:server": "rimraf runtime && babel --presets react,node6,stage-0 src -d ./runtime",
     "start": "cross-env NODE_ENV=production node ./runtime/server",
     "postinstall": "npm run build:server && npm run build:client"
   },
@@ -20,6 +20,7 @@
     "babel-loader": "^6.2.4",
     "babel-polyfill": "^6.13.0",
     "babel-preset-es2015": "^6.9.0",
+    "babel-preset-node6": "^11.0.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
