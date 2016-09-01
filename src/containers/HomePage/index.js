@@ -10,7 +10,7 @@ import ReactMarkdown from 'react-markdown';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
-export default function HomePage(props) {
+function HomePage(props) {
 
   const {
     loaded,

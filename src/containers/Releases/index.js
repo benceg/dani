@@ -5,7 +5,7 @@ import get from 'lodash/get'
 
 import { fetchContent } from './actions';
 
-export default function Releases(props) {
+function Releases(props) {
 
   const {
     content
