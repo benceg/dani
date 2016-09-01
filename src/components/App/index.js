@@ -6,7 +6,7 @@ export default function App(props) {
   return (
     <div>
       <Menu />
-      {this.props.children}
+      {props.children}
     </div>
   )
 }
