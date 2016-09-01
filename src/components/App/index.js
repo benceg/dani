@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Menu from './Menu';
+import Menu from '../Menu';
 
 export default function App(props) {
   return (
     <div>
       <Menu />
-      {props.children}
+      {this.props.children}
     </div>
   )
 }

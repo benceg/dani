@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { ReduxAsyncConnect } from 'redux-connect'
 import thunkMiddleware from 'redux-thunk';
@@ -19,16 +19,16 @@ const createStoreWithMiddleware = applyMiddleware(
 const store = createStoreWithMiddleware(reducers, window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(browserHistory, store);
 
-ReactDOM.render(
+render(
   <Provider store={store}>
-    <Router render={props => <ReduxAsyncConnect {...props}/>} history={history}>
+    <Router render={props => <ReduxAsyncConnect {...props} />} history={history}>
       {routes}
     </Router>
   </Provider>,
   document.getElementById('app')
 );
 
-if(process.env.NODE_ENV == 'development' && module.hot) {
+if (process.env.NODE_ENV === 'development' && module.hot === true) {
 	module.hot.accept('./reducers', () => {
 		store.replaceReducer(require('./reducers').default);
 	});

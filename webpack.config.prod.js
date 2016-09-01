@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer-stylus');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const jeet = require('jeet');
+const nib = require('nib');
 
 module.exports = {
 	entry: path.resolve(__dirname, 'src'),
@@ -44,12 +46,16 @@ module.exports = {
 			},
 			{
 				test: /\.styl$/,
-				loader: ExtractTextPlugin.extract('style', 'css!sass!stylus'),
+				loader: ExtractTextPlugin.extract('style', 'css!stylus'),
 				include: path.resolve(__dirname, 'src')
 			}
 		]
 	},
   stylus: {
-    use: [autoprefixer()]
+    use: [
+      jeet(),
+      nib(),
+      autoprefixer()
+    ]
   }
 };

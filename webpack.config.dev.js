@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer-stylus');
+const jeet = require('jeet');
+const nib = require('nib');
 
 module.exports = {
 	devtool: 'eval-source-map',
@@ -45,6 +47,10 @@ module.exports = {
 		]
 	},
 	stylus: {
-		use: [autoprefixer()]
+		use: [
+      jeet(),
+      nib(),
+      autoprefixer()
+    ]
 	}
 };

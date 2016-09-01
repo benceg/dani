@@ -8,6 +8,8 @@ import { fetchContent } from './actions';
 
 import ReactMarkdown from 'react-markdown';
 
+if (process.env.WEBPACK) require('./stylesheet.styl');
+
 export default function HomePage(props) {
 
   const {

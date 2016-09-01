@@ -4,17 +4,17 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
-import { ReduxAsyncConnect, loadOnServer } from 'redux-connect'
-import serialize from 'serialize-javascript'
+import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
+import serialize from 'serialize-javascript';
 
 import reducers from './reducers';
 import routes from './routes';
 
 const createStoreWithMiddleware = applyMiddleware(
 	thunkMiddleware
-)(createStore)
+)(createStore);
 
-const store = createStoreWithMiddleware(reducers)
+const store = createStoreWithMiddleware(reducers);
 
 export default (req, res) => {
 	match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
@@ -36,9 +36,9 @@ export default (req, res) => {
 					res.status(200).send(`
 						<!doctype html>
 						<html>
-							<header>
-								<title>My Universal App</title>
-							</header>
+							<head>
+								<title>Danielle Booysen</title>
+							</head>
 							<body>
 								<div id='app'></div>
 								<script src='bundle.js'></script>
@@ -51,10 +51,10 @@ export default (req, res) => {
 					res.status(200).send(`
 						<!doctype html>
 						<html>
-							<header>
-								<title>My Universal App</title>
+							<head>
+								<title>Danielle Booysen</title>
 								<link rel='stylesheet' href='bundle.css'>
-							</header>
+							</head>
 							<body>
 								<div id='app'>${renderToString(
 									<Provider store={store}>
