@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer-stylus');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 const jeet = require('jeet');
 const nib = require('nib');
 
@@ -21,8 +22,11 @@ module.exports = {
 			}
 		}),
 		new webpack.optimize.UglifyJsPlugin({
-			compressor: {
+			compress: {
 				warnings: false
+			},
+			output: {
+		  	comments: false
 			}
 		}),
 		new CopyWebpackPlugin([
@@ -31,7 +35,8 @@ module.exports = {
 				to: path.resolve(__dirname, 'dist', 'assets')
 			}
 		]),
-		new ExtractTextPlugin('bundle.css')
+		new ExtractTextPlugin('bundle.css'),
+		new Visualizer()
 	],
 	module: {
 		loaders: [

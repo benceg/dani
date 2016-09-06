@@ -8,6 +8,7 @@ module.exports = {
 	devtool: 'eval-source-map',
 	entry: [
 		'webpack-hot-middleware/client',
+		'react-hot-loader/patch',
 		path.resolve(__dirname, 'src')
 	],
 	output: {
@@ -31,9 +32,7 @@ module.exports = {
 				test: /\.js$/,
 				loader: 'babel',
 				include: path.resolve(__dirname, 'src'),
-				query: {
-					presets: ['react-hmre']
-				}
+				exclude: /node_modules/
 			},
 			{
 				test: /\.json$/,

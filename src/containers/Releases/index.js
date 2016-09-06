@@ -36,7 +36,7 @@ Releases.propTypes = {
 };
 
 const mapStateToProps = ({ releases }) => ({
-  loading: releases.loading,
+  loaded: releases.loaded,
   content: releases.content
 });
 

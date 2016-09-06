@@ -1,15 +1,16 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { ReduxAsyncConnect } from 'redux-connect'
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
-import { Provider } from 'react-redux';
-import { Router, IndexRoute, browserHistory } from 'react-router';
+import { render } from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import reducers from './reducers';
 import routes from './routes';
+
+import Root from './containers/Root';
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
@@ -20,16 +21,28 @@ const store = createStoreWithMiddleware(reducers, window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(
-  <Provider store={store}>
-    <Router render={props => <ReduxAsyncConnect {...props} />} history={history}>
-      {routes}
-    </Router>
-  </Provider>,
+  <AppContainer>
+    <Root
+      store={store}
+      history={history}
+      routes={routes}
+    />
+  </AppContainer>,
   document.getElementById('app')
 );
 
-if (process.env.NODE_ENV === 'development' && module.hot === true) {
-	module.hot.accept('./reducers', () => {
-		store.replaceReducer(require('./reducers').default);
-	});
+if (module.hot) {
+  module.hot.accept('./containers/Root', () => {
+    const RootContainer = require('./containers/Root').default;
+    render(
+      <AppContainer>
+        <RootContainer
+          store={store}
+          history={history}
+          routes={routes}
+        />
+      </AppContainer>,
+      document.getElementById('app')
+    );
+  });
 }
