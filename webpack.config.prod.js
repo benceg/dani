@@ -25,9 +25,8 @@ module.exports = {
 			compress: {
 				warnings: false
 			},
-			output: {
-		  	comments: false
-			}
+		  comments: false,
+			sourceMap: false
 		}),
 		new CopyWebpackPlugin([
 			{

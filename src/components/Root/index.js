@@ -15,9 +15,8 @@ export default function Root(props) {
       <Router
         render={args => <ReduxAsyncConnect {...args} />}
         history={history}
-      >
-        {routes}
-      </Router>
+        routes={routes}
+      />
     </Provider>
   )
 }

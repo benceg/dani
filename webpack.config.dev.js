@@ -7,8 +7,8 @@ const nib = require('nib');
 module.exports = {
 	devtool: 'eval-source-map',
 	entry: [
-		'webpack-hot-middleware/client',
 		'react-hot-loader/patch',
+		'webpack-hot-middleware/client',
 		path.resolve(__dirname, 'src')
 	],
 	output: {

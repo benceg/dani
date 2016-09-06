@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
+
 import middleware from './middleware';
 
 const app = express();
@@ -28,7 +29,7 @@ if (process.env.NODE_ENV === 'development') {
 	}));
 
 	app.use(require('webpack-hot-middleware')(compiler));
-  
+
 	app.use(express.static(path.resolve(__dirname, 'src')));
 
 } else if (process.env.NODE_ENV === 'production') {

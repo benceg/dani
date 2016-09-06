@@ -8,9 +8,6 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { createStore, applyMiddleware } from 'redux';
 
 import reducers from './reducers';
-import routes from './routes';
-
-import Root from './containers/Root';
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
@@ -20,29 +17,21 @@ const createStoreWithMiddleware = applyMiddleware(
 const store = createStoreWithMiddleware(reducers, window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(browserHistory, store);
 
-render(
-  <AppContainer>
-    <Root
-      store={store}
-      history={history}
-      routes={routes}
-    />
-  </AppContainer>,
-  document.getElementById('app')
-);
+function renderRootComponent() {
+  const Root = require('./components/Root').default;
+  const routes = require('./routes').default;
+
+  render(
+    <AppContainer>
+      <Root {...{store, history, routes}} />
+    </AppContainer>,
+    document.getElementById('app')
+  );
+}
 
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    const RootContainer = require('./containers/Root').default;
-    render(
-      <AppContainer>
-        <RootContainer
-          store={store}
-          history={history}
-          routes={routes}
-        />
-      </AppContainer>,
-      document.getElementById('app')
-    );
-  });
+  module.hot.accept('./components/Root', renderRootComponent);
+  module.hot.accept('./routes', renderRootComponent);
 }
+
+renderRootComponent();

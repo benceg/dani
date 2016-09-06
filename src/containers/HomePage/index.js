@@ -23,7 +23,7 @@ function HomePage(props) {
   return (
     <div>
 
-      <div>Title: {title}</div>
+      <h1>Title: {title}</h1>
 
       <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
 

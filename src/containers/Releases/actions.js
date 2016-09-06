@@ -6,10 +6,12 @@ export const LOADING_RELEASES_CONTENT = 'LOADING_RELEASES_CONTENT';
 export const RECEIVE_RELEASES_CONTENT = 'RECEIVE_RELEASES_CONTENT';
 
 export function fetchContent() {
-  return dispatch => {
-    dispatch(requestContent());
-    return client.getEntries({ content_type: 'releases', include: 10 })
-      .then(({ items }) => dispatch(receiveContent(items)));
+  return (dispatch, getState) => {
+    if (get(getState(), 'releases.loaded') === false) {
+      dispatch(requestContent());
+      return client.getEntries({ content_type: 'releases', include: 10 })
+        .then(({ items }) => dispatch(receiveContent(items)));
+    }
   }
 }
 
