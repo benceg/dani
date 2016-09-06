@@ -5,6 +5,8 @@ import get from 'lodash/get'
 
 import { fetchContent } from './actions';
 
+if (process.env.WEBPACK) require('./stylesheet.styl');
+
 function Releases(props) {
 
   const {

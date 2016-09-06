@@ -1,8 +1,7 @@
 import React from 'react';
-import {
-  Link,
-  IndexLink
-} from 'react-router';
+import { Link, IndexLink } from 'react-router';
+
+if (process.env.WEBPACK) require('./stylesheet.styl');
 
 const menuItems = [
   { title: "Home", uri: "/" },
@@ -12,8 +11,12 @@ const menuItems = [
 ];
 
 export default function Menu(props) {
+  const {
+    tint
+  } = props;
+
   return (
-    <ul className="menu">
+    <ul className="Menu">
       {menuItems.map(i =>
         <li key={i.uri} className="">
           {(i.uri === '/'

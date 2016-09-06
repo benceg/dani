@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
+import ReactMarkdown from 'react-markdown';
 import head from 'lodash/head';
 import get from 'lodash/get';
 
 import { fetchContent } from './actions';
 
-import ReactMarkdown from 'react-markdown';
+import AppView from '../../components/AppView';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
@@ -21,15 +22,21 @@ function HomePage(props) {
   } = props;
 
   return (
-    <div>
+    <AppView
+      className='HomePage'
+      tint='#4a2f5a'
+    >
 
-      <h1>Title: {title}</h1>
+      <figure>
+        <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
+      </figure>
 
-      <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
+      <article>
+        <h1>{title}</h1>
+        <ReactMarkdown source={body || ''} escapeHtml={true} />
+      </article>
 
-      <ReactMarkdown source={body || ''} escapeHtml={true} />
-
-    </div>
+    </AppView>
   );
 
 }
