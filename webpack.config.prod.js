@@ -42,7 +42,8 @@ module.exports = {
 			{
 				test: /\.js$/,
 				loader: 'babel',
-				include: path.resolve(__dirname, 'src')
+				include: path.resolve(__dirname, 'src'),
+				exclude: /node_modules/
 			},
 			{
 				test: /\.json$/,
@@ -50,7 +51,7 @@ module.exports = {
 			},
 			{
 				test: /\.styl$/,
-				loader: ExtractTextPlugin.extract('style', 'css!stylus'),
+				loader: ExtractTextPlugin.extract('css!stylus'),
 				include: path.resolve(__dirname, 'src')
 			}
 		]

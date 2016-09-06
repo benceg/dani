@@ -5,6 +5,7 @@ const jeet = require('jeet');
 const nib = require('nib');
 
 module.exports = {
+	cache: true,
 	devtool: 'eval-source-map',
 	entry: [
 		'react-hot-loader/patch',
