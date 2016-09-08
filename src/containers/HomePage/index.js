@@ -11,35 +11,26 @@ import AppView from '../../components/AppView';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
-function HomePage(props) {
+const HomePage = ({
+  loaded,
+  body,
+  image,
+  slug,
+  title
+}) =>
 
-  const {
-    loaded,
-    body,
-    image,
-    slug,
-    title
-  } = props;
+<AppView className='HomePage' tint='#4a2f5a'>
 
-  return (
-    <AppView
-      className='HomePage'
-      tint='#4a2f5a'
-    >
+  <figure>
+    <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
+  </figure>
 
-      <figure>
-        <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
-      </figure>
+  <article>
+    <h1>{title}</h1>
+    <ReactMarkdown source={body || ''} escapeHtml={true} />
+  </article>
 
-      <article>
-        <h1>{title}</h1>
-        <ReactMarkdown source={body || ''} escapeHtml={true} />
-      </article>
-
-    </AppView>
-  );
-
-}
+</AppView>
 
 HomePage.propTypes = {
   loaded: React.PropTypes.bool.isRequired,

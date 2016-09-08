@@ -7,30 +7,18 @@ import { fetchContent } from './actions';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
-function Releases(props) {
+const Releases = ({
+  content
+}) =>
 
-  const {
-    content
-  } = props;
-
-  return (
-    <ul>
-      {content.map(item => {
-
-        const {
-          slug,
-          title
-        } = item.fields;
-
-        return (
-          <li key={slug}>{title}</li>
-        );
-
-      })}
-    </ul>
-  )
-
-}
+<ul>
+  {content.map(({
+    slug,
+    title
+  }) =>
+    <li key={slug}>{title}</li>
+  )}
+</ul>
 
 Releases.propTypes = {
   loaded: React.PropTypes.bool.isRequired,

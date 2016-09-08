@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import serialize from 'serialize-javascript';
+import Helmet from "react-helmet";
 
 import reducers from './reducers';
 import routes from './routes';
@@ -48,19 +49,26 @@ export default (req, res) => {
 
 				} else if (process.env.NODE_ENV == 'production') {
 
+					const output = renderToString(
+						<Provider store={store}>
+							<ReduxAsyncConnect {...renderProps} />
+						</Provider>
+					);
+
+					const head = Helmet.rewind();
+
 					res.status(200).send(`
 						<!doctype html>
-						<html>
+						<html ${head.htmlAttributes.toString()}>
 							<head>
-								<title>Danielle Booysen</title>
+								${head.title.toString()}
+		            ${head.meta.toString()}
+		            ${head.link.toString()}
+		            ${head.style.toString()}
 								<link rel='stylesheet' href='bundle.css'>
 							</head>
 							<body>
-								<div id='app'>${renderToString(
-									<Provider store={store}>
-										<ReduxAsyncConnect {...renderProps} />
-									</Provider>
-								)}</div>
+								<div id='app'>${output}</div>
 								<script>window.__INITIAL_STATE__=${serialize(store.getState())};</script>
 								<script src='bundle.js'></script>
 							</body>

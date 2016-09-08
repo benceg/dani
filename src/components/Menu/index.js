@@ -10,21 +10,19 @@ const menuItems = [
   { title: "Contact", uri: "/contact" }
 ];
 
-export default function Menu(props) {
-  const {
-    tint
-  } = props;
+const Menu = ({
+  tint
+}) =>
 
-  return (
-    <ul className="Menu">
-      {menuItems.map(i =>
-        <li key={i.uri} className="">
-          {(i.uri === '/'
-            ? <IndexLink to={i.uri} activeClassName="active">{i.title}</IndexLink>
-            : <Link to={i.uri} activeClassName="active">{i.title}</Link>
-          )}
-        </li>
+<ul className="Menu">
+  {menuItems.map(i =>
+    <li key={i.uri} className="">
+      {(i.uri === '/'
+        ? <IndexLink to={i.uri} activeClassName="active">{i.title}</IndexLink>
+        : <Link to={i.uri} activeClassName="active">{i.title}</Link>
       )}
-    </ul>
-  )
-}
+    </li>
+  )}
+</ul>
+
+export default Menu;

@@ -10,7 +10,8 @@ export function fetchContent() {
     if (get(getState(), 'releases.loaded') === false) {
       dispatch(requestContent());
       return client.getEntries({ content_type: 'releases', include: 10 })
-        .then(({ items }) => dispatch(receiveContent(items)));
+        .then(({ items }) => items.map(item => item.fields))
+        .then(items => dispatch(receiveContent(items)));
     }
   }
 }
