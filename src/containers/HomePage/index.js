@@ -16,7 +16,6 @@ if (process.env.WEBPACK) require('./stylesheet.styl');
 const tint = '#4a2f5a';
 
 const HomePage = ({
-  loaded,
   body,
   image,
   slug,
