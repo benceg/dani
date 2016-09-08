@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
+import compression from 'compression';
 
 import middleware from './middleware';
 
@@ -8,6 +9,8 @@ const app = express();
 
 const ip = process.env.IP || '0.0.0.0';
 const port = process.env.PORT || 3000;
+
+app.use(compression());
 
 if (process.env.NODE_ENV === 'development') {
 
