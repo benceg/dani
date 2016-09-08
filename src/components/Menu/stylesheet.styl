@@ -1,2 +1,48 @@
 .Menu
-  margin 0
+  position fixed
+  margin 15px 0 0
+  right 0
+  z-index 1
+  list-style none
+  font-family 'ChunkFive', sans-serif
+  font-weight normal
+  text-align right
+
+  li
+    text-transform lowercase
+
+  a
+    position relative
+    display inline-block
+    font-size 18px
+    line-height 1.333em
+    color white
+    text-decoration none
+    padding 0 15px 0 8px
+    transition color 0.2s
+    margin 0.1em 0
+
+    &:after
+      content ''
+      display block
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      background white
+      transform translateX(100%)
+      transition color 0.2s, transform 0.2s
+      z-index -1
+
+    &:not(.active):hover
+      color inherit
+
+      &:after
+        transform translateX(0)
+
+    &.active
+      color inherit
+      font-size 1.333em
+      background white
+      padding 3px 15px 3px 8px

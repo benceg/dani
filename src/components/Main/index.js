@@ -1,0 +1,18 @@
+import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+if (process.env.WEBPACK) require('./stylesheet.styl');
+
+const Main = ({
+  children
+}) =>
+
+<div className='Main'>
+  <ReactCSSTransitionGroup transitionName="mainTransition" transitionAppear={true} transitionAppearTimeout={300}>
+    <div className='transitioner'>
+      {children}
+    </div>
+  </ReactCSSTransitionGroup>
+</div>
+
+export default Main;

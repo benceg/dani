@@ -1,0 +1,20 @@
+.Main
+  margin 0
+
+  @media (orientation landscape)
+    position relative
+    width 60%
+    float left
+
+  .transitioner
+    opacity 1
+    transform translate3d(0,0,0)
+
+  .mainTransition-appear
+    opacity 0
+    transform translate3d(-50px,0,0)
+
+  .mainTransition-appear.mainTransition-appear-active
+    opacity 1
+    transform translate3d(0,0,0)
+    transition transform 0.3s, opacity 0.3s

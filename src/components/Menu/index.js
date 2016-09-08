@@ -16,7 +16,7 @@ const Menu = ({
 
 <ul className="Menu">
   {menuItems.map(i =>
-    <li key={i.uri} className="">
+    <li key={i.uri} style={{color: tint}} className="">
       {(i.uri === '/'
         ? <IndexLink to={i.uri} activeClassName="active">{i.title}</IndexLink>
         : <Link to={i.uri} activeClassName="active">{i.title}</Link>

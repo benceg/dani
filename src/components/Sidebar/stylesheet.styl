@@ -1,0 +1,27 @@
+.Sidebar
+
+  @media (orientation landscape)
+    position relative
+    width 40%
+    float right
+
+  .fade
+    display block
+    position fixed
+    bottom 0
+    left 60%
+    right 0
+    height 30px
+
+  .transitioner
+    opacity 1
+    transform translate3d(0,0,0)
+
+  .sidebarTransition-appear
+    opacity 0
+    transform translate3d(0,50px,0)
+
+  .sidebarTransition-appear.sidebarTransition-appear-active
+    opacity 1
+    transform translate3d(0,0,0)
+    transition transform 0.3s, opacity 0.3s

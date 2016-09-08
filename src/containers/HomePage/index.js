@@ -8,8 +8,12 @@ import get from 'lodash/get';
 import { fetchContent } from './actions';
 
 import AppView from '../../components/AppView';
+import Main from '../../components/Main';
+import Sidebar from '../../components/Sidebar';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
+
+const tint = '#4a2f5a';
 
 const HomePage = ({
   loaded,
@@ -19,16 +23,20 @@ const HomePage = ({
   title
 }) =>
 
-<AppView className='HomePage' tint='#4a2f5a'>
+<AppView className='HomePage' tint={tint}>
 
-  <figure>
+  <Main>
     <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
-  </figure>
+  </Main>
 
-  <article>
-    <h1>{title}</h1>
-    <ReactMarkdown source={body || ''} escapeHtml={true} />
-  </article>
+  <Sidebar tint={tint} fade={true}>
+    <article>
+      <h1>{title}</h1>
+      <section>
+        <ReactMarkdown source={body || ''} escapeHtml={true} />
+      </section>
+    </article>
+  </Sidebar>
 
 </AppView>
 

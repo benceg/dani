@@ -1,28 +1,43 @@
 .HomePage
 
   h1
-    font-size 52px
+    font-size 72px
+    line-height 1.2
+    margin 0 0 1em
+    font-weight normal
     font-family 'ChunkFive', sans-serif
 
-  figure
-    margin 0
+    @media (orientation landscape)
+
+      @media (max-width 1280px)
+        font-size 54px
+
+  .Main
     overflow hidden
 
     @media (orientation landscape)
       position fixed
-      width 60vw
       height 100vh
       left 0
       top 0
 
   img
+    position relative
+    left 50%
     height 100vh
-    transform translateX(-25%)
+    transform translateX(-50%)
 
   article
+    padding 6%
+    font-size 14px
+    line-height 1.5em
+    margin-top 40%
 
-    @media (orientation landscape)
-      position relative
-      width 40vw
-      min-height 100vh
-      float right
+  section
+    column-count 2
+
+    @media (max-width 1024px)
+      column-count auto
+
+    *:first-child
+      margin-top 0

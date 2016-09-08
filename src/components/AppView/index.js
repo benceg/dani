@@ -11,10 +11,10 @@ const App = ({
   children
 }) =>
 
-<div className={`AppView ${className}`}>
+<main className={`AppView ${className}`}>
   <Helmet style={[{cssText: `body { background-color: ${tint}; }`}]} />
   <Menu tint={tint} />
   {children}
-</div>
+</main>
 
 export default App;
