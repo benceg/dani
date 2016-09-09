@@ -9,6 +9,7 @@ import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
 import Releases from '../../components/Releases';
+import Live from '../../components/Live';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
@@ -22,13 +23,11 @@ const Music = ({
 <AppView className='Music' tint={tint} title='Music'>
 
   <Main>
-
     <h1>Music</h1>
-
+    <h2>Releases</h2>
+    {live.length && <Live {...{live}} />}
+    <h2>Live</h2>
     {releases.length && <Releases {...{releases}} />}
-
-    {live.length && live.map(item => <div>{item.title}</div>)}
-
   </Main>
 
   <Sidebar tint={tint}>
