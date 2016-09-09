@@ -15,13 +15,8 @@ const Album = ({
 }) =>
 
 <li className='Album'>
-  ({formatDate(releaseDate)}) {title}
-  <ul className='tracklist'>
-    <img src={`${get(head(images), 'fields.file.url')}?fit=thumb&w=600&h=600&q=80`} />
-    {tracklist.map((track, index) =>
-      <li className='track' key={track}>{index + 1}: {track}</li>
-    )}
-  </ul>
+  <img src={`${get(head(images), 'fields.file.url')}?fit=thumb&w=600&h=600&q=80`} />
+  <h2>{formatDate(releaseDate)} {title}</h2>
 </li>
 
 export default Album;

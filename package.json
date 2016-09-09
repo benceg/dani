@@ -15,6 +15,7 @@
     "postinstall": "npm run build:server && npm run build:client"
   },
   "dependencies": {
+    "babel-polyfill": "^6.13.0",
     "compression": "^1.6.2",
     "contentful": "^3.5.0",
     "cross-env": "^2.0.1",

@@ -8,38 +8,45 @@ import { fetchContent } from './actions';
 import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
-import Album from '../../components/Album';
+import Releases from '../../components/Releases';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
 const tint = '#ad3243';
 
-const Releases = ({
-  content
+const Music = ({
+  releases,
+  live
 }) =>
 
-<AppView className='Releases' tint={tint}>
+<AppView className='Music' tint={tint} title='Music'>
 
   <Main>
-    <ul>
-      {content.map(item => <Album key={item.slug} {...item} />)}
-    </ul>
+
+    <h1>Music</h1>
+
+    {releases.length && <Releases {...{releases}} />}
+
+    {live.length && live.map(item => <div>{item.title}</div>)}
+
   </Main>
 
   <Sidebar tint={tint}>
-    Something!
+    Music Blurb.
   </Sidebar>
 
 </AppView>
 
-Releases.propTypes = {
+Music.propTypes = {
   loaded: React.PropTypes.bool.isRequired,
-  content: React.PropTypes.array.isRequired
+  releases: React.PropTypes.array.isRequired,
+  live: React.PropTypes.array.isRequired
 };
 
-const mapStateToProps = ({ releases }) => ({
-  loaded: releases.loaded,
-  content: releases.content
+const mapStateToProps = ({ music }) => ({
+  loaded: music.loaded,
+  releases: music.releases,
+  live: music.live
 });
 
 export default asyncConnect(
@@ -47,4 +54,4 @@ export default asyncConnect(
     promise: ({ store: { dispatch } }) => dispatch(fetchContent())
   }],
   mapStateToProps
-)(Releases);
+)(Music);

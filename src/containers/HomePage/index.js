@@ -22,7 +22,7 @@ const HomePage = ({
   title
 }) =>
 
-<AppView className='HomePage' tint={tint}>
+<AppView className='HomePage' tint={tint} title={title}>
 
   <Main>
     <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />

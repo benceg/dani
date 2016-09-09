@@ -5,8 +5,8 @@ if (process.env.WEBPACK) require('./stylesheet.styl');
 
 const menuItems = [
   { title: "Home", uri: "/" },
-  { title: "Releases", uri: "/releases" },
-  { title: "Events", uri: "/events" },
+  { title: "Music", uri: "/music" },
+  { title: "Writing", uri: "/writing" },
   { title: "Contact", uri: "/contact" }
 ];
 

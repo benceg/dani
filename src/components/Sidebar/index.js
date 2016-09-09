@@ -11,7 +11,7 @@ const Sidebar = ({
 
 <div className='Sidebar'>
   <ReactCSSTransitionGroup transitionName="sidebarTransition" transitionAppear={true} transitionAppearTimeout={300}>
-    <div className='transitioner'>
+    <div className='transitioner' key='SidebarTransitioner'>
       {children}
     </div>
   </ReactCSSTransitionGroup>

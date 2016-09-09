@@ -4,11 +4,11 @@ import { reducer as formReducer } from 'redux-form';
 import { reducer as reduxAsyncConnect } from 'redux-connect';
 
 import homePage from './containers/HomePage/reducers';
-import releases from './containers/Releases/reducers';
+import music from './containers/Music/reducers';
 
 export default combineReducers({
   homePage,
-  releases,
+  music,
   reduxAsyncConnect,
   form: formReducer,
   routing: routerReducer
