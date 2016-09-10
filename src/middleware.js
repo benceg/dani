@@ -65,7 +65,8 @@ export default (req, res) => {
 		            ${head.meta.toString()}
 		            ${head.link.toString()}
 		            ${head.style.toString()}
-								<link rel='stylesheet' href='bundle.css'>
+								<link rel="stylesheet" href="bundle.css">
+								<meta name="robots" content="noindex, nofollow">
 							</head>
 							<body>
 								<div id='app'>${output}</div>
