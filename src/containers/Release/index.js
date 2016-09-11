@@ -18,6 +18,7 @@ import Helmet from 'react-helmet';
 import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
+import Track from '../../components/Track';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
@@ -33,11 +34,16 @@ const Release = ({
   tracklist
 }) =>
 
-<AppView className='Release' tint={colour || tint} title='Release'>
+<AppView className='Release' tint={colour || tint} title={title || Release}>
 
   {!title && <Helmet base={{"href": "/404"}} />}
 
-  <Helmet htmlAttributes={{'data-theme': (color(colour).dark() ? 'dark' : 'light')}} />
+  <Helmet
+    htmlAttributes={{'data-theme': (color(colour).dark() ? 'dark' : 'light')}}
+    style={[
+      {cssText: `.tracklist li:before { color: ${colour || tint}; }`}
+    ]}
+  />
 
   <Main>
     <img src={`${get(head(images), 'fields.file.url')}?w=1920&h=1080`} />
@@ -48,8 +54,10 @@ const Release = ({
       <h1>{title}</h1>
       <date dateTime={releaseDate}>{formatDate(releaseDate, 'MMMM Do, YYYY')}</date>
       <ol className='tracklist'>
-        {tracklist && tracklist.map(track =>
-          <li key={track}>{track}</li>
+        {tracklist && tracklist.map(({ sys: { id }, fields }) =>
+          <li key={id}>
+            <Track {...fields} />
+          </li>
         )}
       </ol>
       <section>

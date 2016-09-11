@@ -8,7 +8,13 @@ const Main = ({
 }) =>
 
 <div className='Main'>
-  <ReactCSSTransitionGroup transitionName="mainTransition" transitionAppear={true} transitionAppearTimeout={300}>
+  <ReactCSSTransitionGroup
+    transitionName="mainTransition"
+    transitionAppear={true}
+    transitionAppearTimeout={300}
+    transitionEnterTimeout={0}
+    transitionLeaveTimeout={0}
+  >
     <div className='transitioner' key='MainTransitioner'>
       {children}
     </div>

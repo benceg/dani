@@ -1,0 +1,59 @@
+@import url('https://file.myfontastic.com/iCFmJBwKuM8ipfhht25Lt/icons.css')
+
+.Track
+
+  h4
+  .audio
+    display inline-block
+    vertical-align top
+
+  h4
+    font-weight normal
+    font-size inherit
+    width calc(100% - 120px)
+    margin 0
+
+  .audio
+    width 120px
+    text-align right
+
+  .duration
+    font-size 10px
+    color rgba(black, 0.6)
+    margin-right 3px
+
+  .toggle
+    display inline-block
+    vertical-align top
+    cursor pointer
+    overflow hidden
+    position relative
+    width 24px
+    height 24px
+    text-indent -999em
+    text-align left
+    margin -3px 0 -3px 3px
+    background rgba(black, 0.1)
+
+    [data-theme="dark"] &
+      color rgba(white, 0.8)
+
+    &:hover
+      background rgba(black, 0.075)
+      color rgba(black, 0.6)
+
+      [data-theme="dark"] &
+        color white
+
+    &:before
+      display inline-block
+      position absolute
+      top 0
+      left 0
+      width 24px
+      height 24px
+      font-size 12px
+      line-height 26px
+      text-indent 0
+      text-align center
+      vertical-align middle

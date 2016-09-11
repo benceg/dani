@@ -24,7 +24,7 @@ const App = ({
     {name: 'theme-color', content: tint}
   ]} />
 
-  <Helmet title={title} />
+  <Helmet title={`${title} – Danielle Booysen`} />
 
   <Menu tint={tint} />
 
