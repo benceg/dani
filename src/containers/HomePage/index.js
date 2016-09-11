@@ -44,7 +44,6 @@ HomePage.propTypes = {
   loaded: React.PropTypes.bool.isRequired,
   body: React.PropTypes.string,
   image: React.PropTypes.object,
-  slug: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired
 };
 
@@ -52,7 +51,6 @@ const mapStateToProps = ({ homePage }) => ({
   loaded: homePage.loaded,
   body: homePage.content.body,
   image: homePage.content.image,
-  slug: homePage.content.slug,
   title: homePage.content.title
 });
 

@@ -1,12 +1,20 @@
 .Menu
   position fixed
-  margin 15px 0 0
+  margin 20px 0 0
   right 0
   z-index 1
-  list-style none
   font-family 'ChunkFive', sans-serif
   font-weight normal
   text-align right
+
+  ul
+    list-style none
+    margin 0
+    padding 0
+    transition transform 0.2s
+
+    &.open a
+      transform translateX(0)
 
   li
     text-transform lowercase
@@ -20,8 +28,12 @@
     color white
     text-decoration none
     padding 0 15px 0 8px
-    transition color 0.2s
+    transition color 0.2s, transform 0.2s
     margin 0.1em 0
+    transform translateX(100%)
+
+    &.active
+      transform translateX(0)
 
     [data-theme="light"] &
       color rgba(black, 0.8)
@@ -44,6 +56,7 @@
 
     &:not(.active):hover
       color inherit
+      transition-delay 0ms !important
 
       &:after
         transform translateX(0)
