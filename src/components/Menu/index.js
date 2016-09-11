@@ -7,6 +7,7 @@ const menuItems = [
   { title: "Home", uri: "/" },
   { title: "Music", uri: "/music" },
   { title: "Writing", uri: "/writing" },
+  { title: "Blog", uri: "/blog" },
   { title: "Contact", uri: "/contact" }
 ];
 

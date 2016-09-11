@@ -1,5 +1,7 @@
 import React from 'react';
 import find from 'lodash/find';
+import get from 'lodash/get';
+import head from 'lodash/head';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 import color from 'color';
@@ -7,6 +9,8 @@ import color from 'color';
 import { push } from 'react-router-redux';
 
 import { fetchContent } from './actions';
+
+import formatDate from '../../helpers/formatDate';
 
 import ReactMarkdown from 'react-markdown';
 import Helmet from 'react-helmet';
@@ -36,20 +40,22 @@ const Release = ({
   <Helmet htmlAttributes={{'data-theme': (color(colour).dark() ? 'dark' : 'light')}} />
 
   <Main>
+    <img src={`${get(head(images), 'fields.file.url')}?w=1920&h=1080`} />
+  </Main>
+
+  <Sidebar tint={colour || tint} fade={true}>
     <article>
       <h1>{title}</h1>
+      <date dateTime={releaseDate}>{formatDate(releaseDate, 'MMMM Do, YYYY')}</date>
+      <ol className='tracklist'>
+        {tracklist && tracklist.map(track =>
+          <li key={track}>{track}</li>
+        )}
+      </ol>
       <section>
         <ReactMarkdown source={blurb || ''} escapeHtml={true} />
       </section>
     </article>
-  </Main>
-
-  <Sidebar tint={tint}>
-    <ul className='tracklist'>
-      {tracklist && tracklist.map((track, index) =>
-        <li key={index + track}>{index + 1}. {track}</li>
-      )}
-    </ul>
   </Sidebar>
 
 </AppView>

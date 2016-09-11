@@ -36,8 +36,9 @@ export default (req, res) => {
 
 					res.status(200).send(`
 						<!doctype html>
-						<html>
+						<html lang="en">
 							<head>
+								<meta charset="utf-8">
 								<title>Danielle Booysen</title>
 							</head>
 							<body>
@@ -66,8 +67,9 @@ export default (req, res) => {
 
 						res.status(200).send(`
 							<!doctype html>
-							<html ${head.htmlAttributes.toString()}>
+							<html lang="en" ${head.htmlAttributes.toString()}>
 								<head>
+									<meta charset="utf-8">
 									${head.title.toString()}
 			            ${head.meta.toString()}
 			            ${head.link.toString()}

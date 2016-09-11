@@ -23,6 +23,9 @@
     transition color 0.2s
     margin 0.1em 0
 
+    [data-theme="light"] &
+      color rgba(black, 0.8)
+
     &:after
       content ''
       display block
@@ -36,6 +39,9 @@
       transition color 0.2s, transform 0.2s
       z-index -1
 
+      [data-theme="light"] &
+        background rgba(black, 0.8)
+
     &:not(.active):hover
       color inherit
 
@@ -47,3 +53,6 @@
       font-size 1.333em
       background white
       padding 3px 15px 3px 8px
+
+      [data-theme="light"] &
+        background rgba(black, 0.8)

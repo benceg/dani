@@ -1,0 +1,62 @@
+.Release
+
+  .Main
+    overflow hidden
+
+    @media (orientation landscape)
+      position fixed
+      height 100vh
+      left 0
+      top 0
+
+  img
+    position relative
+    left 50%
+    height 100vh
+    transform translateX(-50%)
+
+  article
+    font-size 14px
+    line-height 1.5em
+    margin-top 40%
+
+  h1
+    font-size 72px
+    line-height 1.2
+    margin 0
+    font-weight normal
+    font-family 'ChunkFive', sans-serif
+    padding 0 6%
+
+    @media (orientation landscape)
+
+      @media (max-width 1280px)
+        font-size 54px
+
+  date
+    display block
+    font-family 'ChunkFive', sans-serif
+    font-size 24px
+    opacity 0.75
+    margin-bottom 36px
+    padding 0 6%
+
+  .tracklist
+    list-style-position inside
+    font-size 13px
+    margin 0
+    padding 0
+
+    li
+      padding 8px 6%
+
+      &:nth-child(2n)
+        background-color rgba(white, 0.1)
+
+        [data-theme="light"] &
+          background-color rgba(black, 0.05)
+
+  section
+    font-size 0.9em
+    margin-top 36px
+    padding 0 6% 30px
