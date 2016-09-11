@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import Menu from '../../Containers/Menu';
+import Menu from '../../containers/Menu';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
