@@ -25,9 +25,9 @@ const Music = ({
   <Main>
     <h1>Music</h1>
     <h2>Releases</h2>
-    {live.length && <Live {...{live}} />}
-    <h2>Live</h2>
     {releases.length && <Releases {...{releases}} />}
+    <h2>Live</h2>
+    {live.length && <Live {...{live}} />}
   </Main>
 
   <Sidebar tint={tint}>

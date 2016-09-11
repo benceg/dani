@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
-import ReactMarkdown from 'react-markdown';
 import head from 'lodash/head';
 import get from 'lodash/get';
 
 import { fetchContent } from './actions';
+
+import ReactMarkdown from 'react-markdown';
 
 import AppView from '../../components/AppView';
 import Main from '../../components/Main';

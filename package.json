@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.13.0",
+    "color": "^0.11.3",
     "compression": "^1.6.2",
     "contentful": "^3.5.0",
     "cross-env": "^2.0.1",
@@ -23,6 +24,7 @@
     "fecha": "^2.2.0",
     "form-serialize": "^0.7.1",
     "lodash": "^4.15.0",
+    "node-vibrant": "^2.1.2",
     "react": "^15.2.1",
     "react-addons-css-transition-group": "^15.3.1",
     "react-dom": "^15.2.1",

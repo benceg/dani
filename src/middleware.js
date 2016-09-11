@@ -42,7 +42,7 @@ export default (req, res) => {
 							</head>
 							<body>
 								<div id='app'></div>
-								<script src='bundle.js'></script>
+								<script src='/bundle.js'></script>
 							</body>
 						</html>
 					`);
@@ -71,7 +71,7 @@ export default (req, res) => {
 							<body>
 								<div id='app'>${output}</div>
 								<script>window.__INITIAL_STATE__=${serialize(store.getState())};</script>
-								<script src='bundle.js'></script>
+								<script src='/bundle.js'></script>
 							</body>
 						</html>
 					`);
