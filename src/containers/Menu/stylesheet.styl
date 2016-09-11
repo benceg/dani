@@ -33,7 +33,12 @@
     transform translateX(100%)
 
     @media (orientation landscape)
-      background-color transparent !important
+
+      @media (min-width 769px)
+        background-color transparent !important
+
+      @media (max-width 768px)
+        box-shadow -1px 1px 3px rgba(black, 0.1)
 
     &.active
       transform translateX(0)
