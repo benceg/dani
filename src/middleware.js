@@ -39,6 +39,7 @@ export default (req, res) => {
 						<html lang="en">
 							<head>
 								<meta charset="utf-8">
+								<meta name="viewport" content="width=device-width, initial-scale=1">
 								<title>Danielle Booysen</title>
 							</head>
 							<body>
@@ -70,6 +71,7 @@ export default (req, res) => {
 							<html lang="en" ${head.htmlAttributes.toString()}>
 								<head>
 									<meta charset="utf-8">
+									<meta name="viewport" content="width=device-width, initial-scale=1">
 									${head.title.toString()}
 			            ${head.meta.toString()}
 			            ${head.link.toString()}

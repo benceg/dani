@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import get from 'lodash/get';
-import formatDuration from 'format-duration';
+
+import formatDuration from '../../helpers/formatDuration';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
@@ -27,7 +28,7 @@ class Track extends Component {
 
   setDuration(e) {
     this.setState({
-      duration: formatDuration(Math.floor(e.target.duration) * 1000)
+      duration: formatDuration(e.target.duration)
     });
   }
 
@@ -40,7 +41,7 @@ class Track extends Component {
 
   timeUpdate(e) {
     this.setState({
-      elapsed: formatDuration(Math.floor(e.target.currentTime) * 1000)
+      elapsed: formatDuration(e.target.currentTime)
     });
   }
 

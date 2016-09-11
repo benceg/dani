@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, IndexLink } from 'react-router';
 import { connect } from 'react-redux';
+import get from 'lodash/get';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
@@ -11,6 +12,8 @@ const menuItems = [
   { title: "Blog", uri: "/blog" },
   { title: "Contact", uri: "/contact" }
 ];
+
+const menuOffset = 20;
 
 class Menu extends Component {
 
@@ -28,11 +31,10 @@ class Menu extends Component {
   }
 
   transformList(route) {
-    const activeItem = this.list.querySelector(`[href="${route}"]`).parentNode;
+    const activeItem = this.list.querySelector(`.active`).parentNode;
     this.setState({
-      top: `-${Math.round(activeItem.getBoundingClientRect().top - 20)}px`
+      top: `-${Math.round(activeItem.getBoundingClientRect().top - menuOffset)}px`
     });
-    console.log(route);
   }
 
   toggle(e) {
@@ -42,11 +44,17 @@ class Menu extends Component {
         open: false
       });
     } else {
-      e.preventDefault();
-      e.stopPropagation();
       this.setState({
         open: true
       });
+    }
+  }
+
+  noop(e) {
+    const { open } = this.state;
+    console.log(open);
+    if (!open) {
+      e.preventDefault();
     }
   }
 
@@ -63,7 +71,7 @@ class Menu extends Component {
     } = this.state;
 
     return (
-      <div className="Menu">
+      <div className="Menu" style={{marginTop: menuOffset}}>
         <ul
           className={open ? 'open' : 'closed'}
           ref={(el) => this.list = el}
@@ -73,8 +81,8 @@ class Menu extends Component {
           {menuItems.map(({ uri, title }, index) =>
             <li key={uri} style={{color: tint}}>
               {(uri === '/'
-                ? <IndexLink to={uri} activeClassName="active">{title}</IndexLink>
-                : <Link to={uri} activeClassName="active">{title}</Link>
+                ? <IndexLink to={uri} activeClassName="active" style={{backgroundColor: tint}} onClick={(e) => this.noop(e)}>{title}</IndexLink>
+                : <Link to={uri} activeClassName="active" style={{backgroundColor: tint}} onClick={(e) => this.noop(e)}>{title}</Link>
               )}
             </li>
           )}
@@ -88,7 +96,7 @@ class Menu extends Component {
 
 const mapStateToProps = ({ routing }, { tint }) => ({
   tint,
-  route: routing.locationBeforeTransitions.pathname
+  route: get(routing, 'locationBeforeTransitions.pathname')
 });
 
 export default connect(

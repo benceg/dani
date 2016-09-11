@@ -12,6 +12,10 @@
       @media (max-width 1280px)
         font-size 54px
 
+    @media (orientation portrait)
+      font-size 42px
+      margin 0 0 0.5em
+
   .Main
     overflow hidden
 
@@ -21,10 +25,20 @@
       left 0
       top 0
 
+      img
+        height 100vh
+
+    @media (orientation portrait)
+      position relative
+      left 0
+      top 0
+
+      img
+        width 100%
+
     img
       position relative
       left 50%
-      height 100vh
       transform translateX(-50%)
       user-select none
       pointer-events none
@@ -34,6 +48,14 @@
     font-size 14px
     line-height 1.5em
     margin-top 40%
+
+    @media (orientation portrait)
+      margin-top 0
+
+    @media (orientation landscape)
+
+      @media (max-width 568px)
+        margin-top 20%
 
   section
     column-count 2
