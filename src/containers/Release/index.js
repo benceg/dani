@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 import color from 'color';
 
-import { fetchContent } from '../Music/actions';
+import { push } from 'react-router-redux';
+
+import { fetchContent } from './actions';
 
 import ReactMarkdown from 'react-markdown';
 import Helmet from 'react-helmet';
@@ -29,9 +31,9 @@ const Release = ({
 
 <AppView className='Release' tint={colour || tint} title='Release'>
 
-  <Helmet meta={[
-    {name: 'page-theme', content: (color(colour).dark() ? 'dark' : 'light')}
-  ]} />
+  {!title && <Helmet base={{"href": "/404"}} />}
+
+  <Helmet htmlAttributes={{'data-theme': (color(colour).dark() ? 'dark' : 'light')}} />
 
   <Main>
     <article>
@@ -73,7 +75,7 @@ const mapStateToProps = ({ music }, { params }) => {
 
 export default asyncConnect(
   [{
-    promise: ({ store: { dispatch } }) => dispatch(fetchContent())
+    promise: ({ store: { dispatch }, params: { release } }) => dispatch(fetchContent(release))
   }],
   mapStateToProps
 )(Release);

@@ -7,14 +7,16 @@ export const RECEIVE_MUSIC_CONTENT = 'RECEIVE_MUSIC_CONTENT';
 
 export function fetchContent() {
   return (dispatch, getState) => {
-    if (get(getState(), 'music.loaded') === false) {
-      dispatch(requestContent());
+    if (get(getState(), 'music.loaded') === true) return Promise.resolve();
+    dispatch(requestContent())
+    return dispatch(() =>
       Promise.all([
         client.getEntries({ content_type: 'releases', include: 10 }),
         client.getEntries({ content_type: 'live', include: 10 })
       ])
-        .then(content => dispatch(receiveContent(content)))
-    }
+    ).then(content =>
+      dispatch(receiveContent(content))
+    )
   }
 }
 

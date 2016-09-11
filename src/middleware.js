@@ -41,8 +41,8 @@ export default (req, res) => {
 								<title>Danielle Booysen</title>
 							</head>
 							<body>
-								<div id='app'></div>
-								<script src='/bundle.js'></script>
+								<div id="app"></div>
+								<script src="/bundle.js"></script>
 							</body>
 						</html>
 					`);
@@ -56,25 +56,34 @@ export default (req, res) => {
 					);
 
 					const head = Helmet.rewind();
+					const errorRoute = (head.base && head.base.toString().indexOf('404') > -1);
 
-					res.status(200).send(`
-						<!doctype html>
-						<html ${head.htmlAttributes.toString()}>
-							<head>
-								${head.title.toString()}
-		            ${head.meta.toString()}
-		            ${head.link.toString()}
-		            ${head.style.toString()}
-								<link rel="stylesheet" href="bundle.css">
-								<meta name="robots" content="noindex, nofollow">
-							</head>
-							<body>
-								<div id='app'>${output}</div>
-								<script>window.__INITIAL_STATE__=${serialize(store.getState())};</script>
-								<script src='/bundle.js'></script>
-							</body>
-						</html>
-					`);
+					if (errorRoute) {
+
+						res.status(404).send('Not found');
+
+					} else {
+
+						res.status(200).send(`
+							<!doctype html>
+							<html ${head.htmlAttributes.toString()}>
+								<head>
+									${head.title.toString()}
+			            ${head.meta.toString()}
+			            ${head.link.toString()}
+			            ${head.style.toString()}
+									<link rel="stylesheet" href="/bundle.css">
+									<meta name="robots" content="noindex, nofollow">
+								</head>
+								<body>
+									<div id="app">${output}</div>
+									<script>window.__INITIAL_STATE__=${serialize(store.getState())};</script>
+									<script src="/bundle.js"></script>
+								</body>
+							</html>
+						`);
+
+					}
 
 				}
 

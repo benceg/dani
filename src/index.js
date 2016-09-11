@@ -6,14 +6,15 @@ import createLogger from 'redux-logger';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { createStore, applyMiddleware } from 'redux';
 
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
-  createLogger()
+  createLogger(),
+  routerMiddleware(browserHistory)
 )(createStore);
 
 const store = createStoreWithMiddleware(reducers, window.__INITIAL_STATE__);
