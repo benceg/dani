@@ -52,10 +52,7 @@ class Menu extends Component {
 
   noop(e) {
     const { open } = this.state;
-    console.log(open);
-    if (!open) {
-      e.preventDefault();
-    }
+    if (!open) e.preventDefault();
   }
 
   render() {
@@ -72,21 +69,35 @@ class Menu extends Component {
 
     return (
       <div className="Menu" style={{marginTop: menuOffset}}>
+
         <ul
           className={open ? 'open' : 'closed'}
           ref={(el) => this.list = el}
           style={{transform: (!open ? `translateY(${top})` : 'none')}}
           onClick={(e) => this.toggle(e)}
         >
-          {menuItems.map(({ uri, title }, index) =>
-            <li key={uri} style={{color: tint}}>
-              {(uri === '/'
-                ? <IndexLink to={uri} activeClassName="active" style={{backgroundColor: tint}} onClick={(e) => this.noop(e)}>{title}</IndexLink>
-                : <Link to={uri} activeClassName="active" style={{backgroundColor: tint}} onClick={(e) => this.noop(e)}>{title}</Link>
-              )}
-            </li>
-          )}
+
+          {menuItems.map(({ uri, title }, index) => {
+
+            const linkProps = {
+              activeClassName: 'active',
+              style: {backgroundColor: tint},
+              onClick: (e) => this.noop(e)
+            };
+
+            return (
+              <li key={uri} style={{color: tint}}>
+                {(uri === '/'
+                  ? <IndexLink to={uri} {...linkProps}>{title}</IndexLink>
+                  : <Link to={uri} {...linkProps}>{title}</Link>
+                )}
+              </li>
+            )
+
+          })}
+
         </ul>
+
       </div>
     )
 
