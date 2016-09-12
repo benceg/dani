@@ -69,7 +69,7 @@ class Menu extends Component {
         <ul
           className={open && 'open'}
           ref={(el) => this.list = el}
-          style={{transform: `translateY(${(!open ? top : 0)})`}}
+          style={{transform: `translate3d(0,${(!open ? top : 0)},0)`}}
         >
           {menuItems.map(({ uri, title }) =>
             <li key={uri} style={{color: tint}}>

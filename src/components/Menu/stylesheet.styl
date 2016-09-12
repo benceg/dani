@@ -14,7 +14,7 @@
     transition transform 0.2s
 
     &.open a
-      transform translateX(0)
+      transform translate3d(0,0,0)
 
   li
     text-transform lowercase
@@ -30,7 +30,7 @@
     padding 0 15px 0 8px
     transition color 0.2s, transform 0.2s
     margin 0.1em 0
-    transform translateX(100%)
+    transform translate3d(100%,0,0)
 
     @media (orientation landscape)
 
@@ -52,7 +52,7 @@
       bottom 0
       left 0
       background white
-      transform translateX(100%)
+      transform translate3d(100%,0,0)
       transition color 0.2s, transform 0.2s
       z-index -1
 
@@ -65,14 +65,14 @@
       transition-delay 0ms !important
 
       &:after
-        transform translateX(0)
+        transform translate3d(0,0,0)
 
     &.active
       color inherit
       font-size 1.333em
       background-color white !important
       padding 3px 15px 3px 8px
-      transform translateX(0)
+      transform translate3d(0,0,0)
 
       [data-theme="light"] &
         background rgba(black, 0.8) !important
