@@ -40,9 +40,6 @@
       @media (max-width 768px)
         box-shadow -1px 1px 3px rgba(black, 0.1)
 
-    &.active
-      transform translateX(0)
-
     [data-theme="light"] &
       color rgba(black, 0.8)
 
@@ -63,6 +60,7 @@
         background rgba(black, 0.8)
 
     &:not(.active):hover
+    &:not(.active):focus
       color inherit
       transition-delay 0ms !important
 
@@ -74,6 +72,7 @@
       font-size 1.333em
       background-color white !important
       padding 3px 15px 3px 8px
+      transform translateX(0)
 
       [data-theme="light"] &
-        background rgba(black, 0.8)
+        background rgba(black, 0.8) !important
