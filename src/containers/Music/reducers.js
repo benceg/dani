@@ -5,6 +5,7 @@ import {
 
 const initialState = {
   loaded: false,
+  content: {},
   releases: [],
   live: []
 };
@@ -14,7 +15,7 @@ export default (state = initialState, action) => {
     case LOADING_MUSIC_CONTENT:
       return {...state, loaded: action.loaded}
     case RECEIVE_MUSIC_CONTENT:
-      return {...state, loaded: action.loaded, releases: action.releases, live: action.live}
+      return {...state, loaded: action.loaded, content: action.content, releases: action.releases, live: action.live}
     default:
       return state
   }

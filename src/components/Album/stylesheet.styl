@@ -1,4 +1,148 @@
 .Album
+  display block
+  float left
+  font-size 0
+  color white
+  position relative
+  width calc(100% / 3 - 12px)
+  height 0
+  padding-top calc(100% / 3 - 12px)
+  transition opacity 0.2s
+  margin 6px
 
-  img
-    width 300px
+  a
+    display block
+    color white
+    position absolute
+    width 100%
+    height 100%
+    top 0
+    left 0
+
+    &:hover
+
+      div
+        opacity 0.2
+
+      figure
+        &:after
+          opacity 1
+
+        img
+          transform rotateY(-55deg)
+
+        .record
+          transform translate3d(0,-40%,0)
+
+  figure
+  div
+    display inline-block
+    vertical-align bottom
+
+  figure
+    margin 0
+    padding 0
+    width 100%
+    height 100%
+    position relative
+    z-index 1
+    transition transform 0.2s
+    transform-style preserve-3d
+    backface-visibility hidden
+    perspective 1000px
+
+    &:after
+      content ''
+      display block
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      background rgba(black, 0.1)
+      transition opacity 0.3s
+      opacity 0
+      z-index 1
+
+    img
+      width 100%
+      height 100%
+      display block
+      position absolute
+      top 0
+      left 0
+      z-index 2
+      pointer-events none
+      backface-visibility hidden
+      transform-origin 0 50%
+      transition transform 0.2s
+
+  .record
+    position absolute
+    top 2px
+    right 4px
+    bottom 2px
+    left 0px
+    background-color #131313
+    border-radius 50%
+    z-index 0
+    pointer-events none
+    transition transform 0.3s
+
+  .record-label
+    position absolute
+    top 50%
+    left 50%
+    border-radius 50%
+    background-color white
+    width 46%
+    height 46%
+    margin -23% 0 0 -23%
+    z-index 0
+
+    &:before
+      display block
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      content ''
+      background-color rgba(black, 0.1)
+
+  div
+    display inline-block
+    max-width calc(100% - 90px)
+    font-size 24px
+    position relative
+    z-index 0
+    opacity 1
+    transition opacity 0.3s
+    transform-origin 0 50%
+    background-color rgba(black, 0.1)
+
+  date
+  h3
+    display block
+    float left
+    clear both
+    background-color rgba(black, 0.1)
+    margin 0
+
+  date
+    font-size 12px
+    line-height 1.2
+    letter-spacing 0.75
+    padding 4px 8px 2px
+
+  h3
+    font-size 18px
+    line-height 1.2
+    padding 2px 8px 4px
+
+.Releases:hover
+  .Album
+    z-index 0
+
+  .Album:hover
+    z-index 1

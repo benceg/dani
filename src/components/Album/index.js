@@ -12,14 +12,25 @@ const Album = ({
   title,
   images,
   tracklist,
+  colour,
   releaseDate
 }) =>
 
 <li className='Album'>
-  <img src={`${get(head(images), 'fields.file.url')}?fit=thumb&w=600&h=600&q=80`} />
-  <h2>
-    <Link to={`music/${slug}`}>{formatDate(releaseDate)} {title}</Link>
-  </h2>
+
+  <Link to={`music/${slug}`}>
+    <figure style={{backgroundColor: colour}}>
+      <img src={`${get(head(images), 'fields.file.url')}?fit=thumb&w=600&h=600&q=80`} />
+      <span className='record'>
+        <span className='record-label' style={{backgroundColor: colour}} />
+      </span>
+    </figure>
+    {/* <div>
+      <date dateTime={releaseDate}>{formatDate(releaseDate)}</date>
+      <h3>{title}</h3>
+    </div> */}
+  </Link>
+
 </li>
 
 export default Album;

@@ -83,7 +83,7 @@ class Track extends Component {
     const toggleTitle = (playing ? 'Pause' : 'Play');
 
     return (
-      <div className='Track'>
+      <div className={`Track ${(track ? 'hasAudio' : 'noAudio')}`}>
 
         <h4>{title}</h4>
 

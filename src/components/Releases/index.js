@@ -8,7 +8,7 @@ const Releases = ({
   releases
 }) =>
 
-<ul className='Music'>
+<ul className='Releases'>
   {releases.map(release =>
     <Album key={release.slug} {...release} />
   )}

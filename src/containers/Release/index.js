@@ -46,7 +46,7 @@ const Release = ({
   />
 
   <Main>
-    <img src={`${get(head(images), 'fields.file.url')}?w=1920&h=1080`} />
+    <img src={`${get(head(images), 'fields.file.url')}?w=1920&h=1080&q=85`} />
   </Main>
 
   <Sidebar tint={colour || tint} fade={true}>

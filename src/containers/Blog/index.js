@@ -14,7 +14,7 @@ import Sidebar from '../../components/Sidebar';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
-const tint = '#4a2f5a';
+const tint = '#97357f';
 
 const Blog = ({
 

@@ -34,9 +34,6 @@
 
     @media (orientation landscape)
 
-      @media (min-width 769px)
-        background-color transparent !important
-
       @media (max-width 768px)
         box-shadow -1px 1px 3px rgba(black, 0.1)
 
@@ -48,7 +45,7 @@
       display block
       position absolute
       top 0
-      right 0
+      right -24px
       bottom 0
       left 0
       background white
@@ -62,7 +59,6 @@
     &:not(.active):hover
     &:not(.active):focus
       color inherit
-      transition-delay 0ms !important
 
       &:after
         transform translate3d(0,0,0)
@@ -70,9 +66,37 @@
     &.active
       color inherit
       font-size 1.333em
-      background-color white !important
       padding 3px 15px 3px 8px
       transform translate3d(0,0,0)
 
+      &:after
+        background white
+        transform translate3d(-24px,0,0)
+
       [data-theme="light"] &
-        background rgba(black, 0.8) !important
+        &:after
+          background rgba(black, 0.8) !important
+
+      &:before
+        content 'a'
+        font-family 'danielle'
+        display inline-block
+        font-size 0.8em
+        line-height 1
+        vertical-align middle
+        position absolute
+        left -16px
+        top 50%
+        margin-top -0.4em
+        opacity 1
+        transition opacity 0.2s
+
+  ul.open
+
+    a.active
+
+      &:after
+        transform translate3d(0,0,0)
+
+      &:before
+        opacity 0
