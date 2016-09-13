@@ -64,6 +64,17 @@ class Track extends Component {
     });
   }
 
+  togglePlay(playing) {
+    return (playing === true ? this.pauseTrack() : this.playTrack());
+  }
+
+  handleKeyPress(e, callback) {
+    if (e.which === 32 || e.which === 13) {
+      e.preventDefault();
+      callback();
+    }
+  }
+
   render() {
 
     const {
@@ -94,11 +105,21 @@ class Track extends Component {
               {(hasPlayedOnce ? `${elapsed}/${duration}` : `${duration}`)}
             </span>
 
-            <span className={`toggle icon-rewind`} onClick={() => this.rewindTrack()}>
+            <span
+              tabIndex={0}
+              className={`toggle icon-rewind`}
+              onClick={() => this.rewindTrack()}
+              onKeyPress={(e) => this.handleKeyPress(e, () => this.rewindTrack())}
+            >
               Rewind
             </span>
 
-            <span className={`toggle icon-${toggleTitle.toLowerCase()}`} onClick={() => (playing ? this.pauseTrack() : this.playTrack())}>
+            <span
+              tabIndex={0}
+              className={`toggle icon-${toggleTitle.toLowerCase()}`}
+              onClick={() => this.togglePlay(playing)}
+              onKeyPress={(e) => this.handleKeyPress(e, () => this.togglePlay(playing))}
+            >
               {toggleTitle}
             </span>
 

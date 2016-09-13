@@ -1,4 +1,6 @@
 import React from 'react';
+import Color from 'color';
+
 import Helmet from 'react-helmet';
 
 import Menu from '../../components/Menu';
@@ -15,16 +17,17 @@ const App = ({
 
 <main className={`AppView ${className}`}>
 
-  <Helmet style={[
-    {cssText: `body { background-color: ${tint}; }`}
-  ]} />
-
-  <Helmet meta={[
-    {name: 'description', content: description},
-    {name: 'theme-color', content: tint}
-  ]} />
-
-  <Helmet title={`${title} – Danielle Booysen`} />
+  <Helmet
+    title={`${title} – Danielle Booysen`}
+    style={[
+      {cssText: `body { background-color: ${tint}; }`}
+    ]}
+    meta={[
+      {name: 'description', content: description},
+      {name: 'theme-color', content: tint}
+    ]}
+    htmlAttributes={{'data-theme': (Color(tint).dark() ? 'dark' : 'light')}}
+  />
 
   <Menu tint={tint} />
 

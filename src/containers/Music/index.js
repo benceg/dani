@@ -2,19 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import get from 'lodash/get'
+import get from 'lodash/get';
 
 import { fetchContent } from './actions';
+
+import ReactMarkdown from 'react-markdown';
 
 import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
-import Releases from '../../components/Releases';
-import Live from '../../components/Live';
+import ReleaseList from '../../components/ReleaseList';
+import LiveList from '../../components/LiveList';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
-const tint = '#81072b';
+const tint = '#8a0c39';
 
 const Music = ({
   content: {
@@ -35,30 +37,22 @@ const Music = ({
     {body &&
       <blockquote>
         {body.split("\n").map((line, index) =>
-          <div key={index} style={{backgroundColor: tint}}>{line}</div>
+          <div key={index} style={{color: tint}}>{line}</div>
         )}
       </blockquote>
     }
 
   </Main>
 
-  <Sidebar tint={tint}>
+  <Sidebar tint={tint} fade={true}>
 
     <article>
 
-      {releases.length &&
-        <section className='releases'>
-          <h2>Releases</h2>
-          <Releases {...{releases}} />
-        </section>
-      }
+      <h1>Music</h1>
 
-      {live.length &&
-        <section className='live'>
-          <h2>Live</h2>
-          <Live {...{live}} />
-        </section>
-      }
+      {releases.length && <ReleaseList {...{releases}} />}
+
+      {live.length && <LiveList tint={tint} {...{live}} />}
 
     </article>
 

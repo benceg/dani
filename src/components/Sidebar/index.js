@@ -16,11 +16,11 @@ const Sidebar = ({
     transitionEnterTimeout={0}
     transitionLeaveTimeout={0}
   >
-    <div className='transitioner' key='SidebarTransitioner'>
+    <div key='transitioner' className='transitioner' key='SidebarTransitioner'>
       {children}
     </div>
+    {(fade && tint) && <div key='fade' className='fade' style={{background: `linear-gradient(to top, ${tint}, transparent`}} />}
   </ReactCSSTransitionGroup>
-  {(fade && tint) && <div className='fade' style={{background: `linear-gradient(to top, ${tint}, transparent`}} />}
 </div>
 
 export default Sidebar;

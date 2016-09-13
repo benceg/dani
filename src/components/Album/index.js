@@ -2,6 +2,7 @@ import React from 'react';
 import head from 'lodash/head';
 import get from 'lodash/get';
 import { Link } from 'react-router';
+import Color from 'color';
 
 import formatDate from '../../helpers/formatDate';
 
@@ -18,17 +19,22 @@ const Album = ({
 
 <li className='Album'>
 
-  <Link to={`music/${slug}`}>
-    <figure style={{backgroundColor: colour}}>
-      <img src={`${get(head(images), 'fields.file.url')}?fit=thumb&w=600&h=600&q=80`} />
-      <span className='record'>
-        <span className='record-label' style={{backgroundColor: colour}} />
-      </span>
-    </figure>
-    {/* <div>
+  <Link to={`/music/release/${slug}`}>
+
+    <div className='disc' style={{backgroundColor: colour}}>
+      <figure>
+        <img src={`${get(head(images), 'fields.file.url')}?fit=thumb&w=600&h=600&q=80`} />
+        <span className='record'>
+          <span className='record-label' style={{backgroundColor: Color(colour).darken(0.1).hexString()}} />
+        </span>
+      </figure>
+    </div>
+
+    <div className='details'>
       <date dateTime={releaseDate}>{formatDate(releaseDate)}</date>
       <h3>{title}</h3>
-    </div> */}
+    </div>
+
   </Link>
 
 </li>

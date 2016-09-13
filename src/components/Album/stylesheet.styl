@@ -1,30 +1,37 @@
 .Album
   display block
-  float left
-  font-size 0
-  color white
   position relative
-  width calc(100% / 3 - 12px)
-  height 0
-  padding-top calc(100% / 3 - 12px)
-  transition opacity 0.2s
-  margin 6px
+  padding 0 6%
+  margin 12px 0
 
-  a
+  &:before
+    content ''
     display block
-    color white
     position absolute
-    width 100%
-    height 100%
-    top 0
-    left 0
+    top 10px
+    right 0
+    bottom 10px
+    left 6%
+    background white
+    z-index 0
+    opacity 0
+    transform-origin 0 0
+    transform scale3d(0,1,1)
+    transition transform 0.3s, opacity 0.3s
 
-    &:hover
+  &:hover:before
+    opacity 1
+    transform scale3d(1,1,1)
 
+  &:hover
+
+    .disc
       div
         opacity 0.2
 
       figure
+        &:before
+          transform translate3d(0,-30%,0)
         &:after
           opacity 1
 
@@ -34,111 +41,143 @@
         .record
           transform translate3d(0,-40%,0)
 
-  figure
-  div
-    display inline-block
-    vertical-align bottom
+    .details
+      color #131313
 
-  figure
-    margin 0
-    padding 0
-    width 100%
-    height 100%
-    position relative
-    z-index 1
-    transition transform 0.2s
-    transform-style preserve-3d
-    backface-visibility hidden
-    perspective 1000px
+      h3
+        border-top 1px solid #131313
 
-    &:after
-      content ''
-      display block
-      position absolute
-      top 0
-      right 0
-      bottom 0
-      left 0
-      background rgba(black, 0.1)
-      transition opacity 0.3s
-      opacity 0
-      z-index 1
-
-    img
-      width 100%
-      height 100%
-      display block
-      position absolute
-      top 0
-      left 0
-      z-index 2
-      pointer-events none
-      backface-visibility hidden
-      transform-origin 0 50%
-      transition transform 0.2s
-
-  .record
-    position absolute
-    top 2px
-    right 4px
-    bottom 2px
-    left 0px
-    background-color #131313
-    border-radius 50%
-    z-index 0
-    pointer-events none
-    transition transform 0.3s
-
-  .record-label
-    position absolute
-    top 50%
-    left 50%
-    border-radius 50%
-    background-color white
-    width 46%
-    height 46%
-    margin -23% 0 0 -23%
-    z-index 0
-
-    &:before
-      display block
-      position absolute
-      top 0
-      right 0
-      bottom 0
-      left 0
-      content ''
-      background-color rgba(black, 0.1)
-
-  div
-    display inline-block
-    max-width calc(100% - 90px)
-    font-size 24px
-    position relative
-    z-index 0
-    opacity 1
-    transition opacity 0.3s
-    transform-origin 0 50%
-    background-color rgba(black, 0.1)
-
-  date
-  h3
+  a
     display block
-    float left
-    clear both
-    background-color rgba(black, 0.1)
-    margin 0
+    position relative
 
-  date
-    font-size 12px
-    line-height 1.2
-    letter-spacing 0.75
-    padding 4px 8px 2px
+  .disc
+    display inline-block
+    color white
+    position relative
+    height 0
+    top 0
+    left 0
+    vertical-align middle
+    width 25%
+    padding-top 25%
+    border-radius 3px
 
-  h3
-    font-size 18px
-    line-height 1.2
-    padding 2px 8px 4px
+    @media (orientation portrait)
+      //
+
+    @media (orientation landscape)
+
+      @media (max-width 1024px)
+        width 32%
+        padding-top 32%
+
+    figure
+      display block
+      margin 0
+      padding 0
+      position absolute
+      top 0
+      right -1px
+      bottom -1px
+      left 0
+      z-index 1
+      transition transform 0.2s
+      transform-style preserve-3d
+      backface-visibility hidden
+      perspective 1000px
+
+      &:after
+        content ''
+        display block
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        left 0
+        background rgba(black, 0.1)
+        transition opacity 0.3s
+        opacity 0
+        z-index 1
+        transform translate3d(0,0,0)
+        border-radius 3px
+
+      img
+        width 100%
+        height 100%
+        display block
+        position absolute
+        top 0
+        left 0
+        z-index 2
+        pointer-events none
+        backface-visibility hidden
+        transform-origin 0 50%
+        transition transform 0.2s
+        border-radius 3px
+
+      &:before
+      .record
+        position absolute
+        top 2%
+        left 2%
+        width 96%
+        height 96%
+        border-radius 50%
+        z-index 0
+        pointer-events none
+        transition transform 0.3s
+        transform translate3d(0,0,0)
+
+      &:before
+        content ''
+        background-color rgba(black, 0.05)
+        transition transform 0.2s
+
+      .record
+        background-color #131313
+
+      .record-label
+        position absolute
+        top 50%
+        left 50%
+        border-radius 50%
+        background-color white
+        width 46%
+        height 46%
+        margin -23% 0 0 -23%
+        z-index 0
+
+  .details
+    display inline-block
+    color white
+    text-decoration none
+    vertical-align middle
+    padding 15px 10px 15px 32px
+    transition color 0.3s
+
+    date
+    h3
+      display block
+      float left
+      clear both
+
+    date
+      margin 0
+      font-size 20px
+      line-height 1
+      font-weight 100
+
+    h3
+      margin 0.22em 0 0
+      padding 0.2em 0 0
+      font-size 28px
+      line-height 1
+      font-weight 100
+      border-top 1px solid rgba(white, 0.175)
+      transition border-color 0.3s
+      letter-spacing 0.75px
+      font-family 'ChunkFive', sans-serif
 
 .Releases:hover
   .Album

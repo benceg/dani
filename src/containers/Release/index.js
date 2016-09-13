@@ -4,7 +4,7 @@ import get from 'lodash/get';
 import head from 'lodash/head';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
-import color from 'color';
+import Color from 'color';
 
 import { push } from 'react-router-redux';
 
@@ -39,7 +39,7 @@ const Release = ({
   {!title && <Helmet base={{"href": "/404"}} />}
 
   <Helmet
-    htmlAttributes={{'data-theme': (color(colour).dark() ? 'dark' : 'light')}}
+    htmlAttributes={{'data-theme': (Color(colour).dark() ? 'dark' : 'light')}}
     style={[
       {cssText: `.tracklist li:before { color: ${colour || tint}; }`}
     ]}
