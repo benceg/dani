@@ -4,7 +4,7 @@ import GoogleMap from 'google-map-react';
 
 import Marker from '../Marker';
 
-import styles from './styles.json';
+import styles from './styles';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
