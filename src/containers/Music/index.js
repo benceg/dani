@@ -6,13 +6,12 @@ import get from 'lodash/get';
 
 import { fetchContent } from './actions';
 
-import ReactMarkdown from 'react-markdown';
-
 import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
 import ReleaseList from '../../components/ReleaseList';
 import LiveList from '../../components/LiveList';
+import VideosList from '../../components/VideosList';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
@@ -25,7 +24,8 @@ const Music = ({
     image
   },
   releases,
-  live
+  live,
+  videos
 }) =>
 
 <AppView className='Music' tint={tint} title={title}>
@@ -54,6 +54,8 @@ const Music = ({
 
       {live.length && <LiveList tint={tint} {...{live}} />}
 
+      {videos.length && <VideosList tint={tint} {...{videos}} />}
+
     </article>
 
   </Sidebar>
@@ -64,14 +66,16 @@ Music.propTypes = {
   loaded: React.PropTypes.bool.isRequired,
   content: React.PropTypes.object.isRequired,
   releases: React.PropTypes.array.isRequired,
-  live: React.PropTypes.array.isRequired
+  live: React.PropTypes.array.isRequired,
+  videos: React.PropTypes.array.isRequired
 };
 
 const mapStateToProps = ({ music }) => ({
   loaded: music.loaded,
   content: music.content,
   releases: music.releases,
-  live: music.live
+  live: music.live,
+  videos: music.videos
 });
 
 export default asyncConnect(

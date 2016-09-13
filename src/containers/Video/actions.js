@@ -6,12 +6,12 @@ import { push } from 'react-router-redux';
 
 import { fetchContent as fetchMusicContent } from '../Music/actions';
 
-export function fetchContent(gig) {
+export function fetchContent(video) {
   return (dispatch, getState) => {
     return dispatch(
       fetchMusicContent()
     ).then(() => {
-      if (!isObject(find(get(getState(), 'music.live'), {slug: gig}))) throw new Error('Live show not found.');
+      if (!isObject(find(get(getState(), 'music.videos'), {slug: video}))) throw new Error('Video not found.');
       return;
     }).catch(() =>
       dispatch(push('/'))

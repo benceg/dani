@@ -12,6 +12,8 @@ import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
 
+import routerLink from '../../helpers/routerLink';
+
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
 const tint = '#97357f';

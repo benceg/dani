@@ -1,0 +1,68 @@
+.Video
+
+  .Main
+    overflow hidden
+
+    @media (orientation landscape)
+      position fixed
+      height 100vh
+      left 0
+      top 0
+
+      img
+        height 100vh
+
+    @media (orientation portrait)
+      position relative
+      left 0
+      top 0
+
+      img
+        width 100%
+
+    .transitioner
+      height 100%
+      position relative
+
+    iframe
+      position relative
+      width 100%
+      height 100%
+
+  .Sidebar
+
+    article
+      padding-left 0
+      padding-right 0
+      margin 40% 6% 0
+
+      @media (orientation portrait)
+        margin-top 0
+
+    h1
+      font-size 36px
+      line-height 1.2
+      margin 0
+      font-weight normal
+      font-family 'ChunkFive', sans-serif
+      margin 0 0 8px
+
+      @media (max-width 568px)
+        font-size 28px
+
+      @media (max-width 320px)
+        font-size 24px
+
+      + date
+        display block
+        font-family 'ChunkFive', sans-serif
+        font-size 24px
+        line-height 1.5
+        opacity 0.6
+        margin-bottom 1em
+
+        @media (max-width 568px)
+          font-size 20px
+
+    section
+      margin-top 4em

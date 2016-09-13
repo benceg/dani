@@ -20,13 +20,14 @@ import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
 import Track from '../../components/Track';
 
+import routerLink from '../../helpers/routerLink';
+
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
 const tint = '#ad3243';
 
 const Release = ({
   title,
-  slug,
   blurb,
   images,
   colour,
@@ -36,7 +37,7 @@ const Release = ({
 
 <AppView className='Release' tint={colour || tint} title={title || Release}>
 
-  {!title && <Helmet base={{"href": "/404"}} />}
+  {!title && <Helmet base={{href: '/404'}} />}
 
   <Helmet
     htmlAttributes={{'data-theme': (Color(colour).dark() ? 'dark' : 'light')}}
@@ -61,7 +62,7 @@ const Release = ({
         )}
       </ol>
       <section>
-        <ReactMarkdown source={blurb || ''} escapeHtml={true} />
+        <ReactMarkdown source={blurb || ''} escapeHtml={true} renderers={{Link: routerLink}} />
       </section>
     </article>
   </Sidebar>
@@ -71,7 +72,6 @@ const Release = ({
 Release.propTypes = {
   loaded: React.PropTypes.bool.isRequired,
   title: React.PropTypes.string.isRequired,
-  slug: React.PropTypes.string.isRequired,
   releaseDate: React.PropTypes.string.isRequired,
   blurb: React.PropTypes.string,
   images: React.PropTypes.array,

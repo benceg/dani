@@ -3,7 +3,6 @@ import find from 'lodash/find';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
-import color from 'color';
 
 import { push } from 'react-router-redux';
 
@@ -11,13 +10,14 @@ import { fetchContent } from './actions';
 
 import formatDate from '../../helpers/formatDate';
 
-import ReactMarkdown from 'react-markdown';
 import Helmet from 'react-helmet';
 
 import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
 import Map from '../../components/Map';
+
+import routerLink from '../../helpers/routerLink';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
@@ -29,13 +29,12 @@ const Live = ({
   venueName,
   accompaniment,
   otherActs,
-  date,
-  slug
+  date
 }) =>
 
 <AppView className='Live' tint={tint} title={title || 'Live'}>
 
-  {!title && <Helmet base={{"href": "/404"}} />}
+  {!title && <Helmet base={{href: '/404'}} />}
 
   <Main>
     <Map title={venueName} tint={tint} {...venueLocation} />
@@ -95,7 +94,6 @@ const Live = ({
 Live.propTypes = {
   loaded: React.PropTypes.bool.isRequired,
   title: React.PropTypes.string.isRequired,
-  slug: React.PropTypes.string.isRequired,
   date: React.PropTypes.string.isRequired
 };
 

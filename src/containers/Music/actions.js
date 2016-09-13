@@ -15,7 +15,8 @@ export function fetchContent() {
       Promise.all([
         client.getEntries({ 'sys.id': '7DD77oDfEsG4k6geOwYCic', include: 10 }),
         client.getEntries({ content_type: 'releases', include: 10, order: '-fields.releaseDate' }),
-        client.getEntries({ content_type: 'live', include: 10, order: 'fields.date' })
+        client.getEntries({ content_type: 'live', include: 10, order: 'fields.date' }),
+        client.getEntries({ content_type: 'videos', include: 10, order: '-fields.date' })
       ])
     ).then(content =>
       dispatch(receiveContent(content))
@@ -33,13 +34,15 @@ function requestContent() {
 function receiveContent([
   content,
   releases,
-  live
+  live,
+  videos
 ]) {
   return {
     type: RECEIVE_MUSIC_CONTENT,
     loaded: true,
     content: get(head(get(content, 'items')), 'fields'),
     releases: releases.items.map(item => item.fields),
-    live: live.items.filter(({ fields }) => (parse(fields.date, 'YYYY-MM-DD').getTime() >= new Date().getTime())).map(item => item.fields)
+    live: live.items.filter(({ fields }) => (parse(fields.date, 'YYYY-MM-DD').getTime() >= new Date().getTime())).map(item => item.fields),
+    videos: videos.items.map(item => item.fields),
   }
 }

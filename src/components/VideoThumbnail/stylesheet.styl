@@ -1,0 +1,79 @@
+.VideoThumbnail
+  display block
+  position relative
+  margin 0 0 8px
+  overflow hidden
+
+  a
+    display block
+    text-decoration none
+    color inherit
+    transition color 0.3s
+
+    &:before
+      content ''
+      display block
+      top 0
+      right 0
+      bottom 0
+      left 0
+      background-color white
+      position absolute
+      transform translate3d(-100%,0,0)
+      transition transform 0.3s
+      z-index 0
+
+    &:not(:hover):not(:focus)
+      color white !important
+
+    &:hover
+
+      img
+        filter grayscale(0%)
+
+      &:before
+        transform translate3d(0,0,0)
+
+  figure
+    display inline-block
+    vertical-align middle
+    position relative
+    overflow hidden
+    width 70px
+    height 70px
+    margin 0
+    transform translate3d(0,0,0)
+    z-index 1
+
+  img
+    position absolute
+    height 140%
+    top 50%
+    left 50%
+    z-index 0
+    transform translate(-50%,-50%)
+    filter grayscale(88%)
+    transition filter 0.2s
+
+  .details
+    display inline-block
+    vertical-align middle
+    padding 10px
+    position relative
+    z-index 1
+
+    &:before
+      transform-origin 0 0
+
+    h3
+      font-size 15px
+      line-height 1
+      padding 3px 0
+      font-weight 400
+      margin 0
+
+    .date
+      font-size 12px
+      padding 3px 0
+      line-height 1
+      margin 0

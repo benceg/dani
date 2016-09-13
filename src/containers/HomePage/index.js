@@ -12,6 +12,8 @@ import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
 
+import routerLink from '../../helpers/routerLink';
+
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
 const tint = '#4a2f5a';
@@ -33,7 +35,7 @@ const HomePage = ({
     <article>
       <h1>{title}</h1>
       <section>
-        <ReactMarkdown source={body || ''} escapeHtml={true} />
+        <ReactMarkdown source={body || ''} escapeHtml={true} renderers={{Link: routerLink}} />
       </section>
     </article>
   </Sidebar>

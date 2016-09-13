@@ -7,7 +7,8 @@ const initialState = {
   loaded: false,
   content: {},
   releases: [],
-  live: []
+  live: [],
+  videos: []
 };
 
 export default (state = initialState, action) => {
@@ -15,7 +16,7 @@ export default (state = initialState, action) => {
     case LOADING_MUSIC_CONTENT:
       return {...state, loaded: action.loaded}
     case RECEIVE_MUSIC_CONTENT:
-      return {...state, loaded: action.loaded, content: action.content, releases: action.releases, live: action.live}
+      return {...state, loaded: action.loaded, content: action.content, releases: action.releases, live: action.live, videos: action.videos}
     default:
       return state
   }
