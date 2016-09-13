@@ -27,6 +27,8 @@ const Live = ({
   title,
   venueLocation,
   venueName,
+  accompaniment,
+  otherActs,
   date,
   slug
 }) =>
@@ -36,16 +38,55 @@ const Live = ({
   {!title && <Helmet base={{"href": "/404"}} />}
 
   <Main>
-    <Map title={venueName} {...venueLocation} />
+    <Map title={venueName} tint={tint} {...venueLocation} />
   </Main>
 
   <Sidebar tint={tint} fade={true}>
     <article>
+
       <h1>{title}</h1>
       <date dateTime={date}>{formatDate(date, 'MMMM Do, YYYY')}</date>
-      {/* <section>
-        <ReactMarkdown source={blurb || ''} escapeHtml={true} />
-      </section> */}
+
+      <ul className='details'>
+
+        <li>
+          <label>Doors Open</label>
+          <div>{formatDate(date, 'HH:mm', 'YYYY-MM-DDTHH:mm')}</div>
+        </li>
+
+        <li>
+          <label>Venue</label>
+          <div>{venueName}</div>
+        </li>
+
+        {accompaniment &&
+          <li>
+            <label>With</label>
+            <div>
+              <ul>
+                {accompaniment.map(person =>
+                  <li key={person}>{person}</li>
+                )}
+              </ul>
+            </div>
+          </li>
+        }
+
+        {otherActs &&
+          <li>
+            <label>Also Playing</label>
+            <div>
+              <ul>
+                {otherActs.map(act =>
+                  <li key={act}>{act}</li>
+                )}
+              </ul>
+            </div>
+          </li>
+        }
+
+      </ul>
+
     </article>
   </Sidebar>
 

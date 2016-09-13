@@ -11,12 +11,13 @@ if (process.env.WEBPACK) require('./stylesheet.styl');
 const Map = ({
   title,
   lat,
-  lon
+  lon,
+  tint
 }) =>
 
 <div className='Map'>
   <GoogleMap defaultCenter={[lat, lon]} defaultZoom={17} bootstrapURLKeys={{key: 'AIzaSyBgB2FjrowoXKs4AjgBHkub9KVF3cq4xGU'}} options={{styles}}>
-    <Marker lat={lat} lng={lon} title={title} />
+    <Marker lat={lat} lng={lon} title={title} tint={tint} />
   </GoogleMap>
 </div>
 

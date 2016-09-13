@@ -3,10 +3,11 @@ import React from 'react';
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
 const Marker = ({
-  title
+  title,
+  tint
 }) =>
 
-<div className='Marker'>
+<div className='Marker' style={{backgroundColor: tint}}>
   {title}
 </div>
 
