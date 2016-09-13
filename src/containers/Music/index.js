@@ -31,9 +31,7 @@ const Music = ({
 <AppView className='Music' tint={tint} title={title}>
 
   <Main>
-
     <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
-
     {body &&
       <blockquote>
         {body.split("\n").map((line, index) =>
@@ -41,23 +39,14 @@ const Music = ({
         )}
       </blockquote>
     }
-
   </Main>
 
   <Sidebar tint={tint} fade={true}>
-
     <article>
-
-      <h1>Music</h1>
-
       {releases.length && <ReleaseList {...{releases}} />}
-
       {live.length && <LiveList tint={tint} {...{live}} />}
-
       {videos.length && <VideosList tint={tint} {...{videos}} />}
-
     </article>
-
   </Sidebar>
 
 </AppView>
