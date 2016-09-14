@@ -123,7 +123,7 @@ class Track extends Component {
               {toggleTitle}
             </span>
 
-            <audio ref={(el) => this.audio = el}>
+            <audio ref={el => this.audio = el}>
               <source src={track} type={type} />
             </audio>
 
