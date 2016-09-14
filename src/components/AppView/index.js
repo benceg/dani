@@ -3,7 +3,7 @@ import Color from 'color';
 
 import Helmet from 'react-helmet';
 
-import Menu from '../../containers/Menu';
+import Menu from '../../components/Menu';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
