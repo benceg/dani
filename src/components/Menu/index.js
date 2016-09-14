@@ -27,27 +27,24 @@ class Menu extends Component {
   }
 
   componentDidMount() {
-    const activeItem = this.list.querySelector('.active').parentNode;
-    this.setState({
-      top: -(Math.round(activeItem.getBoundingClientRect().top) - menuOffset)
-    });
+    this.setState({ top: -(Math.round(this.active.getBoundingClientRect().top) - menuOffset) });
   }
 
   handleClickOutside() {
-    this.setState({
-      open: false
-    });
+    this.setState({ open: false });
   }
 
   toggle(e, uri) {
-    const { open } = this.state;
+    const { open, top } = this.state;
     if (!open || uri === location.pathname) e.preventDefault();
-    this.setState({
-      open: !open
-    });
+    this.setState({ top: (e.isDefaultPrevented() ? top : 0), open: !open });
   }
 
   render() {
+    
+    const {
+      router
+    } = this.context;
 
     const {
       tint
@@ -71,7 +68,7 @@ class Menu extends Component {
           style={{transform: `translate3d(0,${(!open ? top : 0)}px,0)`}}
         >
           {menuItems.map(({ uri, title }) =>
-            <li key={uri} style={{color: tint}}>
+            <li key={uri} style={{color: tint}} ref={(router.isActive(uri) ? (el) => this.active = el : null)}>
               {uri === '/' && <IndexLink to={uri} onClick={(e) => this.toggle(e, uri)} {...linkProps}>{title}</IndexLink>}
               {uri !== '/' && <Link to={uri} onClick={(e) => this.toggle(e, uri)} {...linkProps}>{title}</Link>}
             </li>
@@ -83,6 +80,10 @@ class Menu extends Component {
   }
 
 }
+
+Menu.contextTypes = {
+  router: React.PropTypes.object
+};
 
 Menu.propTypes = {
   tint: React.PropTypes.string.isRequired

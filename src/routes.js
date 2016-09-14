@@ -10,16 +10,16 @@ import Video from './containers/Video';
 import Blog from './containers/Blog';
 
 export default (
-	<Route path='/'>
-		<IndexRoute component={HomePage} />
-		<Route path='music'>
-			<IndexRoute component={Music} />
-			<Route path='release/:release' component={Release} />
-			<Route path='live/:gig' component={Live} />
-			<Route path='video/:video' component={Video} />
-		</Route>
-		<Route path='blog'>
-			<IndexRoute component={Blog} />
-		</Route>
+<Route>
+	<Route path='/' component={HomePage} />
+	<Route path='music'>
+		<IndexRoute component={Music} />
+		<Route path='release/:release' component={Release} />
+		<Route path='live/:gig' component={Live} />
+		<Route path='video/:video' component={Video} />
 	</Route>
+	<Route path='blog'>
+		<IndexRoute component={Blog} />
+	</Route>
+</Route>
 );
