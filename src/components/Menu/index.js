@@ -27,9 +27,9 @@ class Menu extends Component {
   }
 
   componentDidMount() {
-    const activeItem = this.list.querySelector(`.active`).parentNode;
+    const activeItem = this.list.querySelector('.active').parentNode;
     this.setState({
-      top: `-${Math.round(activeItem.getBoundingClientRect().top) - menuOffset}px`
+      top: -(Math.round(activeItem.getBoundingClientRect().top) - menuOffset)
     });
   }
 
@@ -39,9 +39,9 @@ class Menu extends Component {
     });
   }
 
-  toggle(e) {
+  toggle(e, uri) {
     const { open } = this.state;
-    if (!open) e.preventDefault();
+    if (!open || uri === location.pathname) e.preventDefault();
     this.setState({
       open: !open
     });
@@ -61,7 +61,6 @@ class Menu extends Component {
     const linkProps = {
       activeClassName: 'active',
       style: {backgroundColor: tint},
-      onClick: (e) => this.toggle(e)
     };
 
     return (
@@ -69,12 +68,12 @@ class Menu extends Component {
         <ul
           className={open && 'open'}
           ref={(el) => this.list = el}
-          style={{transform: `translate3d(0,${(!open ? top : 0)},0)`}}
+          style={{transform: `translate3d(0,${(!open ? top : 0)}px,0)`}}
         >
           {menuItems.map(({ uri, title }) =>
             <li key={uri} style={{color: tint}}>
-              {uri === '/' && <IndexLink to={uri} {...linkProps}>{title}</IndexLink>}
-              {uri !== '/' && <Link to={uri} {...linkProps}>{title}</Link>}
+              {uri === '/' && <IndexLink to={uri} onClick={(e) => this.toggle(e, uri)} {...linkProps}>{title}</IndexLink>}
+              {uri !== '/' && <Link to={uri} onClick={(e) => this.toggle(e, uri)} {...linkProps}>{title}</Link>}
             </li>
           )}
         </ul>
