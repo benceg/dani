@@ -1,6 +1,6 @@
 import React from 'react';
+import Router from 'react-router/lib/Router';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-connect';
 
 const Root = ({

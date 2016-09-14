@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, DefaultRoute, IndexRoute } from 'react-router';
+import Route from 'react-router/lib/Route';
+import IndexRoute from 'react-router/lib/IndexRoute';
 
 import HomePage from './containers/HomePage';
 import Music from './containers/Music';

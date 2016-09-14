@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 import Color from 'color';
 
-import { push } from 'react-router-redux';
-
 import { fetchContent } from './actions';
 
 import formatDate from '../../helpers/formatDate';

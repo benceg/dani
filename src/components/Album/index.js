@@ -1,7 +1,7 @@
 import React from 'react';
 import head from 'lodash/head';
 import get from 'lodash/get';
-import { Link } from 'react-router';
+import Link from 'react-router/lib/Link';
 import Color from 'color';
 
 import formatDate from '../../helpers/formatDate';

@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { Link, IndexLink } from 'react-router';
+import Link from 'react-router/lib/Link';
+import IndexLink from 'react-router/lib/IndexLink';
 import { connect } from 'react-redux';
 import onClickOutside from 'react-onclickoutside';
 import get from 'lodash/get';
+
+import { toggleOpen, changeTop } from './actions';
+
+import getOffset from '../../helpers/getOffset';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
@@ -18,45 +23,39 @@ const menuOffset = 20;
 
 class Menu extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      open: (process.env.WEBPACK ? false : true),
-      top: 0
-    };
+  shouldComponentUpdate(props) {
+    const { top, open } = this.props;
+    return (props.top !== top || props.open !== open);
   }
 
   componentDidMount() {
+    const { dispatch } = this.props;
     const activeItem = this.list.querySelector(`.active`).parentNode;
-    this.setState({
-      top: `-${Math.round(activeItem.getBoundingClientRect().top) - menuOffset}px`
-    });
+    dispatch(changeTop(getOffset(activeItem, menuOffset)));
   }
 
   handleClickOutside() {
-    this.setState({
-      open: false
-    });
+    const { dispatch, open } = this.props;
+    if (!open) return;
+    const activeItem = this.list.querySelector(`.active`).parentNode;
+    dispatch(toggleOpen(false));
+    dispatch(changeTop(getOffset(activeItem, menuOffset)));
   }
 
   toggle(e) {
-    const { open } = this.state;
+    const { dispatch, open } = this.props;
     if (!open) e.preventDefault();
-    this.setState({
-      open: !open
-    });
+    dispatch(toggleOpen(!open));
+    dispatch(changeTop(open ? 0 : getOffset(e.target.parentNode, menuOffset)));
   }
 
   render() {
 
     const {
+      open,
+      top,
       tint
     } = this.props;
-
-    const {
-      open,
-      top
-    } = this.state;
 
     const linkProps = {
       activeClassName: 'active',
@@ -69,7 +68,7 @@ class Menu extends Component {
         <ul
           className={open && 'open'}
           ref={(el) => this.list = el}
-          style={{transform: `translate3d(0,${(!open ? top : 0)},0)`}}
+          style={{transform: `translate3d(0,${(!open ? top : 0)}px,0)`}}
         >
           {menuItems.map(({ uri, title }) =>
             <li key={uri} style={{color: tint}}>
@@ -86,7 +85,14 @@ class Menu extends Component {
 }
 
 Menu.propTypes = {
-  tint: React.PropTypes.string.isRequired
+  tint: React.PropTypes.string.isRequired,
+  open: React.PropTypes.bool.isRequired,
+  top: React.PropTypes.number.isRequired
 };
 
-export default onClickOutside(Menu);
+const mapStateToProps = ({ menu }) => ({
+  open: menu.open,
+  top: menu.top
+});
+
+export default connect(mapStateToProps)(onClickOutside(Menu));

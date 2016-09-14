@@ -4,7 +4,7 @@ import Color from 'color';
 
 import formatDate from '../../helpers/formatDate';
 
-import { Link } from 'react-router';
+import Link from 'react-router/lib/Link';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 

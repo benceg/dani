@@ -4,8 +4,6 @@ import get from 'lodash/get';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 
-import { push } from 'react-router-redux';
-
 import { fetchContent } from './actions';
 
 import formatDate from '../../helpers/formatDate';
