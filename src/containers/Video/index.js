@@ -21,7 +21,7 @@ import routerLink from '../../helpers/routerLink';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
-const tint = '#521e3a';
+const tint = '#98d9e8';
 
 const Video = ({
   title,
@@ -34,14 +34,10 @@ const Video = ({
 
   {!title && <Helmet base={{href: '/404'}} />}
 
-  <Main>
-    <YouTube videoId={youtubeId} opts={{playerVars: {autoplay: true}}} />
-  </Main>
-
   <Sidebar tint={tint} fade={true}>
     <article>
       <h1>{title}</h1>
-      <date dateTime={date} style={{color: Color(tint).lighten(1.6).hexString()}}>{formatDate(date, 'MMMM Do, YYYY')}</date>
+      <date dateTime={date} style={{color: Color(tint).darken(0.8).hexString()}}>{formatDate(date, 'MMMM Do, YYYY')}</date>
       {details &&
         <section>
           <ReactMarkdown source={details || ''} escapeHtml={true} renderers={{Link: routerLink}} />
@@ -49,6 +45,10 @@ const Video = ({
       }
     </article>
   </Sidebar>
+
+  <Main>
+    <YouTube videoId={youtubeId} opts={{playerVars: {autoplay: true, modestBranding: true}}} />
+  </Main>
 
 </AppView>
 

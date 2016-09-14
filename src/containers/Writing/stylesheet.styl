@@ -1,0 +1,57 @@
+.Writing
+
+  h1
+    font-size 72px
+    line-height 1.2
+    margin 0 0 1em
+    font-weight normal
+    font-family 'ChunkFive', sans-serif
+
+    @media (orientation landscape)
+
+      @media (max-width 1280px)
+        font-size 54px
+
+      @media (max-width 768px)
+        font-size 42px
+        margin-bottom 0.5em
+
+    @media (orientation portrait)
+      font-size 42px
+      margin 0 0 0.5em
+
+  .Main
+    overflow hidden
+
+    @media (orientation landscape)
+      position fixed
+      height 100vh
+      left 0
+      top 0
+
+      img
+        height 100vh
+
+    @media (orientation portrait)
+      position relative
+      left 0
+      top 0
+
+      img
+        width 100%
+
+    img
+      position relative
+      left 50%
+      transform translateX(-50%)
+      user-select none
+      pointer-events none
+
+  section
+    column-count 2
+
+    @media (max-width 1024px)
+      column-count auto
+
+    *:first-child
+      margin-top 0

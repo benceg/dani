@@ -1,5 +1,10 @@
 .Video
 
+  @media (orientation portrait)
+    height 100vh
+    display flex
+    flex-direction column
+
   .Main
     overflow hidden
 
@@ -9,27 +14,40 @@
       left 0
       top 0
 
-      img
-        height 100vh
+      .transitioner
+        height 100%
+        position relative
+
+      iframe
+        position relative
+        width 100%
+        height 100%
 
     @media (orientation portrait)
       position relative
       left 0
       top 0
+      flex 1
 
-      img
+      .transitioner
+      .transitioner > span
+        display block
+        position relative
+        height 100%
+
+      iframe
         width 100%
-
-    .transitioner
-      height 100%
-      position relative
-
-    iframe
-      position relative
-      width 100%
-      height 100%
+        height 100%
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        left 0
 
   .Sidebar
+
+    @media (orientation portrait)
+      flex 0
 
     article
       padding-left 0
@@ -38,6 +56,7 @@
 
       @media (orientation portrait)
         margin-top 0
+        padding-top 28%
 
     h1
       font-size 36px
@@ -63,6 +82,9 @@
 
         @media (max-width 568px)
           font-size 20px
+
+        @media (orientation portrait)
+          margin-bottom 0.5em
 
     section
       margin-top 4em
