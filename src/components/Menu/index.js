@@ -7,11 +7,11 @@ import get from 'lodash/get';
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
 const menuItems = [
-  { title: "Home", uri: "/" },
-  { title: "Music", uri: "/music" },
-  { title: "Writing", uri: "/writing" },
-  { title: "Blog", uri: "/blog" },
-  { title: "Contact", uri: "/contact" }
+  { title: "Home", uri: "/", loaded: "homePage.loaded" },
+  { title: "Music", uri: "/music", loaded: "music.loaded" },
+  { title: "Writing", uri: "/writing", loaded: "writing.loaded" },
+  { title: "Blog", uri: "/blog", loaded: "blog.loaded" },
+  { title: "Contact", uri: "/contact", loaded: "contact.loaded" }
 ];
 
 const menuOffset = 20;
@@ -41,7 +41,7 @@ class Menu extends Component {
   }
 
   render() {
-    
+
     const {
       router
     } = this.context;

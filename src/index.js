@@ -11,11 +11,11 @@ import { createStore, applyMiddleware } from 'redux';
 
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware(
-  thunkMiddleware,
-  createLogger(),
-  routerMiddleware(browserHistory)
-)(createStore);
+const middleware = [thunkMiddleware, routerMiddleware(browserHistory)];
+
+if (process.env.NODE_ENV !== 'production') middleware.push(createLogger());
+
+const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
 
 const store = createStoreWithMiddleware(reducers, window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(browserHistory, store);
