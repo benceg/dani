@@ -5,18 +5,21 @@ import BlogLink from '../BlogLink';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
-const BlogList = ({ posts }) =>
+const BlogList = ({
+  tint,
+  posts
+}) =>
 
 <section className='BlogList'>
   <ReactCSSTransitionGroup transitionName="blogListTransition"
     transitionEnterTimeout={300}
     transitionLeaveTimeout={300}
   >
-    <ul key={posts.map(post => post.sys.id).reduce((prev, curr) => `${prev},${curr}`)}>
+    <div className='list' key={posts.map(post => post.sys.id).reduce((prev, curr) => `${prev},${curr}`)} style={{color: tint}}>
       {posts.map(post =>
         <BlogLink key={post.sys.id} {...post} />
       )}
-    </ul>
+    </div>
   </ReactCSSTransitionGroup>
 </section>
 

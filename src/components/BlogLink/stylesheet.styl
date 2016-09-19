@@ -1,15 +1,90 @@
 .BlogLink
-  margin 0 0 1em
+  margin-left 6%
+  display table-row
+  width 100%
+  text-decoration none
+  position relative
+  transition color 0.3s
+  color inherit
 
-  a
-    text-decoration none
-    color inherit
-    display block
+  &:focus
+    outline 0
 
-  h3
-    font-family 'ChunkFive', sans-serif
-    font-size 20px
-    margin 0
+  &:hover
+  &:focus
+    date
+    .details
+      color inherit
+
+      &:before
+        transform scale3d(1,1,1)
+
+    date:before
+      transition-duration 0.2s
 
   date
-    font-size 13px
+  .details
+    display table-cell
+    vertical-align middle
+    position relative
+
+    > *
+      position relative
+      z-index 1
+
+  date
+    width 1%
+    background-color #222
+    color inherit
+    font-size 12px
+    text-align center
+    padding 5px
+
+    &:before
+      transform-origin 100% 0
+      transition-duration 0.34s
+
+    span
+      font-family 'ChunkFive', sans-serif
+      letter-spacing 1px
+      display block
+      white-space nowrap
+
+    .date
+      font-size 1em
+
+    .year
+      font-size 1.4285em
+
+  .details
+    color #222
+    padding 5px 10px
+    font-family 'ChunkFive', sans-serif
+    transition color 0.3s
+
+    &:before
+      content ''
+      position absolute
+      top 0
+      left 0
+      bottom 0
+      right 0
+      background #222
+      z-index 0
+      transform scale3d(0,1,1)
+      transition transform 0.3s
+      transform-origin 0 0
+
+    h3
+      font-size 17px
+      line-height 1
+      padding 3px 0
+      font-weight 400
+      margin 0
+
+    .readingTime
+      font-family 'Roboto', sans-serif
+      font-size 11px
+      padding 3px 0
+      line-height 1
+      margin 0

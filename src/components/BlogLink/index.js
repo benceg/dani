@@ -9,18 +9,23 @@ if (process.env.WEBPACK) require('./stylesheet.styl');
 const BlogLink = ({
   fields: {
     title,
-    slug
+    slug,
+    article
   },
   sys: {
     createdAt
   }
 }) =>
 
-<li className='BlogLink'>
-  <Link to={`/blog/${slug}`}>
+<Link className='BlogLink' to={`/blog/${slug}`}>
+  <date dateTime={createdAt}>
+    <span className='date'>{formatDate(createdAt, 'DD MMM', 'YYYY-MM-DDTHH:mm')}</span>
+    <span className='year'>{formatDate(createdAt, 'YYYY', 'YYYY-MM-DDTHH:mm')}</span>
+  </date>
+  <div className='details'>
     <h3>{title}</h3>
-    <date dateTime={createdAt}>{formatDate(createdAt, 'MMMM Do, YYYY', 'YYYY-MM-DDTHH:mm')}</date>
-  </Link>
-</li>
+    <div className='readingTime'>About a {Math.ceil(article.split(' ').length / 300)} minute read</div>
+  </div>
+</Link>
 
 export default BlogLink;

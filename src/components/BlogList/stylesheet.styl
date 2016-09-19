@@ -1,20 +1,26 @@
 .BlogList
   position relative
   overflow hidden
-  white-space nowrap
 
-  > *
-    white-space normal
+  > span
+    white-space nowrap
+
+    > *
+      white-space normal
 
   @media (orientation landscape)
-    margin-top 40%
+    margin-top 50%
 
-  ul
+  .list
     display inline-block
     vertical-align top
-    list-style none
-    position relative
-    padding 0 6% 6%
+    border-spacing 0 8px
+    border-collapse separate
+    width 100%
+    padding-left 6%
+
+    @media (orientation portrait)
+      width 88%
 
 .blogListTransition-enter
   opacity 0

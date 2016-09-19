@@ -27,6 +27,10 @@
       user-select none
       pointer-events none
 
+    .transitioner
+      @media (orientation portrait)
+        line-height 0
+
     blockquote
       position absolute
       bottom 24px
@@ -36,6 +40,17 @@
       font-size 18px
       line-height 1
       letter-spacing 0.75px
+
+      @media (orientation portrait)
+        position relative
+        bottom auto
+        right auto
+        line-height 1.5em
+        padding 4% 6%
+
+        [data-theme='light'] &
+          background #222
+          margin 0
 
       div
         &:empty
@@ -65,4 +80,25 @@
 
   .Sidebar
 
-    //
+    .BlogList
+      min-height 356px
+
+    .pagination
+      width 100%
+      padding 6%
+      font-size 12px
+      font-family 'Roboto', sans-serif
+      color #222
+      font-weight 700
+      text-transform uppercase
+      letter-spacing 1px
+
+      a
+        color inherit
+        text-decoration none
+
+      .newer
+        float left
+
+      .older
+        float right

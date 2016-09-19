@@ -46,7 +46,7 @@ const Blog = ({
 
   <Sidebar>
 
-    <BlogList {...{posts}} />
+    <BlogList tint={tint} posts={posts} />
 
     <nav className='pagination'>
       {newer && <Link to={`/blog/page/${loaded}`} className='newer'>Newer</Link>}
