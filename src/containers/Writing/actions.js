@@ -10,7 +10,7 @@ export function fetchContent() {
   return (dispatch, getState) => {
     if (get(getState(), 'writing.loaded') === false) {
       dispatch(requestContent());
-      return client.getEntries({ 'sys.id': '25rOGenclCAogoQ2k0M0mc', include: 10 })
+      return client.getEntries({ 'sys.id': '5gLzTsen7GeUsUAa2soiso', include: 10 })
         .then(response => get(head(get(response, 'items')), 'fields'))
         .then(item => dispatch(receiveContent(item)));
     }

@@ -1,0 +1,35 @@
+.BlogList
+  position relative
+  overflow hidden
+  white-space nowrap
+
+  > *
+    white-space normal
+
+  @media (orientation landscape)
+    margin-top 40%
+
+  ul
+    display inline-block
+    vertical-align top
+    list-style none
+    position relative
+    padding 0 6% 6%
+
+.blogListTransition-enter
+  opacity 0
+  transform translate3d(100%,0,0)
+
+.blogListTransition-enter.blogListTransition-enter-active
+  opacity 1
+  transform translate3d(0,0,0)
+  transition transform 0.3s, opacity 0.3s
+
+.blogListTransition-leave
+  opacity 1
+  transform translate3d(-100%,0,0)
+
+.blogListTransition-leave.blogListTransition-leave-active
+  opacity 0
+  transform translate3d(-200%,0,0)
+  transition transform 0.3s,  opacity 0.3s

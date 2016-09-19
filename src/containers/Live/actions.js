@@ -14,7 +14,7 @@ export function fetchContent(gig) {
       if (!isObject(find(get(getState(), 'music.live'), {slug: gig}))) throw new Error('Live show not found.');
       return;
     }).catch(() =>
-      dispatch(push('/'))
+      dispatch(push('/music'))
     );
   }
 }

@@ -6,11 +6,15 @@ import { reducer as reduxAsyncConnect } from 'redux-connect';
 import homePage from './containers/HomePage/reducers';
 import music from './containers/Music/reducers';
 import writing from './containers/Writing/reducers';
+import blog from './containers/Blog/reducers';
+import post from './containers/Post/reducers';
 
 export default combineReducers({
   homePage,
   music,
   writing,
+  blog,
+  post,
   reduxAsyncConnect,
   form: formReducer,
   routing: routerReducer

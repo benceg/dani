@@ -10,7 +10,7 @@ export const RECEIVE_MUSIC_CONTENT = 'RECEIVE_MUSIC_CONTENT';
 export function fetchContent() {
   return (dispatch, getState) => {
     if (get(getState(), 'music.loaded') === true) return Promise.resolve();
-    dispatch(requestContent())
+    dispatch(requestContent());
     return dispatch(() =>
       Promise.all([
         client.getEntries({ 'sys.id': '7DD77oDfEsG4k6geOwYCic', include: 10 }),

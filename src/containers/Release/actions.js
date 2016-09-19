@@ -14,7 +14,7 @@ export function fetchContent(release) {
       if (!isObject(find(get(getState(), 'music.releases'), {slug: release}))) throw new Error('Release not found.');
       return;
     }).catch(() =>
-      dispatch(push('/'))
+      dispatch(push('/music'))
     );
   }
 }

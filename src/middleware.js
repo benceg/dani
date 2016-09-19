@@ -12,9 +12,7 @@ import Helmet from "react-helmet";
 import reducers from './reducers';
 import routes from './routes';
 
-const createStoreWithMiddleware = applyMiddleware(
-	thunkMiddleware
-)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 
 const store = createStoreWithMiddleware(reducers);
 
@@ -77,6 +75,7 @@ export default (req, res) => {
 			            ${head.meta.toString()}
 			            ${head.link.toString()}
 			            ${head.style.toString()}
+									<link rel="canonical" href="https://daniellebooysen.com${req.url}">
 									<link rel="stylesheet" href="/bundle.css">
 									<meta name="robots" content="noindex, nofollow">
 								</head>

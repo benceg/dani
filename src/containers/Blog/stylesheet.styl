@@ -1,0 +1,68 @@
+.Blog
+
+  .Main
+    overflow hidden
+
+    @media (orientation landscape)
+      position fixed
+      height 100vh
+      left 0
+      top 0
+
+      img
+        height 100vh
+
+    @media (orientation portrait)
+      position relative
+      left 0
+      top 0
+
+      img
+        width 100%
+
+    img
+      position relative
+      left 50%
+      transform translateX(-50%)
+      user-select none
+      pointer-events none
+
+    blockquote
+      position absolute
+      bottom 24px
+      right 20px
+      margin 0
+      z-index 2
+      font-size 18px
+      line-height 1
+      letter-spacing 0.75px
+
+      div
+        &:empty
+          display block
+          float none
+          background-color transparent !important
+          box-shadow none
+          height 0
+          padding 0.5em 0 0
+
+        @media (orientation landscape)
+          float right
+          clear both
+          padding 0 0.4em
+          line-height 1.5
+          box-shadow 2px 3px 0 rgba(black, 0.12)
+          background white
+
+          [data-theme='light'] &
+            background #222
+
+        @media (orientation portrait)
+          display inline
+
+          &:after
+            content ' '
+
+  .Sidebar
+
+    //

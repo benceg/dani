@@ -14,7 +14,7 @@ export function fetchContent(video) {
       if (!isObject(find(get(getState(), 'music.videos'), {slug: video}))) throw new Error('Video not found.');
       return;
     }).catch(() =>
-      dispatch(push('/'))
+      dispatch(push('/music'))
     );
   }
 }
