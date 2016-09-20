@@ -8,7 +8,8 @@ const sizes = [
   { breakpoint: 1081, width: 1440, height: 960 },
   { breakpoint: 961, width: 1080, height: 720 },
   { breakpoint: 769, width: 960, height: 640 },
-  { breakpoint: 641, width: 768, height: 512 }
+  { breakpoint: 641, width: 768, height: 512 },
+  { breakpoint: 321, width: 660, height: 440 }
 ];
 
 const Image = ({
@@ -19,17 +20,26 @@ const Image = ({
 }) =>
 
 <span>
-
-  {sizes.map(({
-    breakpoint,
-    width,
-    height
-  }, index) =>
-    <MediaQuery minWidth={sizes[index+1] ? breakpoint : 0} maxWidth={sizes[index-1] ? sizes[index-1].breakpoint : Infinity}>
-      <img src={`${src}?fit=thumb&w=${width}&h=${height}`} width={width} height={height} />
-    </MediaQuery>
+  {(process.env.WEBPACK
+    ?
+      sizes.map(({
+        breakpoint,
+        width,
+        height
+      }, index) =>
+        <MediaQuery minWidth={sizes[index+1] ? breakpoint : 0} maxWidth={sizes[index-1] ? sizes[index-1].breakpoint : Infinity}>
+          <img alt={alt} title={title} className={className} src={`${src}?fit=thumb&w=${width}&h=${height}`} />
+        </MediaQuery>
+      )
+    :
+      sizes.slice(0,1).map(({
+        breakpoint,
+        width,
+        height
+      }, index) =>
+        <img alt={alt} title={title} className={className} src={`${src}?fit=thumb&w=${width}&h=${height}`} />
+      )
   )}
-
 </span>
 
 Image.propTypes = {
