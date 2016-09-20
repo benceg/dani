@@ -6,10 +6,11 @@ if (process.env.WEBPACK) require('./stylesheet.styl');
 const Sidebar = ({
   children,
   fade = false,
+  className = '',
   tint
 }) =>
 
-<div className='Sidebar'>
+<div className={`Sidebar ${className}`}>
   <ReactCSSTransitionGroup transitionName="sidebarTransition"
     transitionAppear={true}
     transitionAppearTimeout={300}

@@ -10,6 +10,7 @@ import ReactMarkdown from 'react-markdown';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 
+import Image from '../../components/Image';
 import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
@@ -37,7 +38,7 @@ const Blog = ({
   <Helmet meta={[{name: 'og:image', content: `${get(image, 'fields.file.url')}?fit=thumb&w=600&h=600`}]} />
 
   <Main>
-    <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
+    <Image src={get(image, 'fields.file.url')} />
     {body &&
       <blockquote>
         {body.split("\n").map((line, index) =>
@@ -47,18 +48,17 @@ const Blog = ({
     }
   </Main>
 
-  <Sidebar>
-
-    {/* <h1>Blog</h1> */}
-
+  <Sidebar tint={tint} fade={true}>
+    <h1>Blog</h1>
     <BlogList tint={tint} posts={posts} />
-
-    <nav className='pagination'>
-      {newer && <Link to={`/blog/page/${loaded}`} className='newer'>Newer</Link>}
-      {older && <Link to={`/blog/page/${loaded + 2}`} className='older'>Older</Link>}
-    </nav>
-
   </Sidebar>
+
+  <span className='opaqueFade' style={{backgroundColor: tint}} />
+
+  <nav className='pagination'>
+    {newer && <Link to={`/blog/page/${loaded}`} className='newer'>Newer</Link>}
+    {older && <Link to={`/blog/page/${loaded + 2}`} className='older'>Older</Link>}
+  </nav>
 
 </AppView>
 

@@ -17,6 +17,7 @@ import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
 import BlogList from '../../components/BlogList';
+import Social from '../../components/Social';
 
 import routerLink from '../../helpers/routerLink';
 import formatDate from '../../helpers/formatDate';
@@ -72,10 +73,11 @@ const Post = ({
     </article>
   </Main>
 
-  <Sidebar className={(image ? 'image' : 'no-image')} tint={tint} fade={true}>
+  <Sidebar className={(get(image, 'fields.file.url') ? 'image' : 'no-image')} tint={tint} fade={true}>
     {image &&
       <img className='sidebarHero' src={`${get(image, 'fields.file.url')}?fit=thumb&w=600&h=400`} alt={title} />
     }
+    <Social title={title} />
     {related &&
       <section className='related'>
         <h4>Related Posts</h4>
@@ -84,8 +86,8 @@ const Post = ({
     }
     {(!related && posts.length !== 0) &&
       <section className='related'>
-        <h4>You Might Also Enjoy</h4>
-        <BlogList tint={tint} posts={slice(shuffle(posts), 0, 5)} />
+        <h4>Recent Posts</h4>
+        <BlogList tint={tint} posts={posts.slice(0,5)} />
       </section>
     }
   </Sidebar>

@@ -1,0 +1,63 @@
+.Social
+  display flex
+  list-style none
+  padding 0
+  margin 10% 0
+
+  @media (orientation portrait)
+    margin 2% 0 0
+
+  > li
+    flex 1
+    text-align center
+
+  [class^='icon-']
+    color white
+    display inline-block
+    width 3.5em
+    height 3.5em
+    font-size 12px
+    border-radius 50%
+    white-space nowrap
+    text-align center
+    cursor pointer
+    transition background-color 0.2s
+
+    > *
+    &:before
+    &:after
+      white-space normal
+      display inline-block
+      vertical-align middle
+
+    &:before
+      font-size 1.5em
+
+    &:after
+      content ''
+      height 100%
+      width 0
+
+    > span
+      font-size 1em
+      margin-left 0.2em
+
+  .icon-facebook
+    background-color #3b5998
+    &:hover
+      background-color lighten(#3b5998, 15%)
+
+  .icon-twitter
+    background-color #1da1f3
+    &:hover
+      background-color lighten(#1da1f3, 15%)
+
+  .icon-reddit
+    background-color orangered
+    &:hover
+      background-color lighten(orangered, 15%)
+
+  .icon-envelope
+    background-color #88667f
+    &:hover
+      background-color lighten(#88667f, 15%)

@@ -4,7 +4,7 @@ import isString from 'lodash/isString';
 
 import client from '../../helpers/contentful';
 
-export const POSTS_PER_PAGE = 6;
+export const POSTS_PER_PAGE = 8;
 export const LOADING_BLOG_CONTENT = 'LOADING_BLOG_CONTENT';
 export const RECEIVE_BLOG_CONTENT = 'RECEIVE_BLOG_CONTENT';
 
@@ -26,9 +26,11 @@ export function fetchContent(pg = 1) {
 }
 
 function requestContent() {
-  return {
-    type: LOADING_BLOG_CONTENT,
-    loaded: false
+  return (dispatch, getState) => {
+    return dispatch({
+      type: LOADING_BLOG_CONTENT,
+      loaded: get(getState(), 'blog.loaded') || false
+    })
   }
 }
 
