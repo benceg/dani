@@ -7,6 +7,7 @@ import get from 'lodash/get';
 import { fetchContent, POSTS_PER_PAGE } from './actions';
 
 import ReactMarkdown from 'react-markdown';
+import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 
 import AppView from '../../components/AppView';
@@ -16,7 +17,7 @@ import BlogList from '../../components/BlogList';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
-const tint = '#c9d360';
+const tint = '#9a3866';
 
 const Blog = ({
   content: {
@@ -33,6 +34,8 @@ const Blog = ({
 
 <AppView className='Blog' tint={tint} title='Blog'>
 
+  <Helmet meta={[{name: 'og:image', content: `${get(image, 'fields.file.url')}?fit=thumb&w=600&h=600`}]} />
+
   <Main>
     <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
     {body &&
@@ -45,6 +48,8 @@ const Blog = ({
   </Main>
 
   <Sidebar>
+
+    {/* <h1>Blog</h1> */}
 
     <BlogList tint={tint} posts={posts} />
 

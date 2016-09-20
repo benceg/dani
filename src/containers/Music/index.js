@@ -6,6 +6,8 @@ import get from 'lodash/get';
 
 import { fetchContent } from './actions';
 
+import Helmet from 'react-helmet';
+
 import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
@@ -15,7 +17,7 @@ import VideosList from '../../components/VideosList';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
-const tint = '#8a0c39';
+const tint = '#a0243d';
 
 const Music = ({
   content: {
@@ -30,6 +32,8 @@ const Music = ({
 
 <AppView className='Music' tint={tint} title={title}>
 
+  <Helmet meta={[{name: 'og:image', content: `${get(image, 'fields.file.url')}?fit=thumb&w=600&h=600`}]} />
+
   <Main>
     <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
     {body &&
@@ -43,7 +47,7 @@ const Music = ({
 
   <Sidebar tint={tint} fade={true}>
     <article>
-      {releases.length && <ReleaseList {...{releases}} />}
+      {releases.length && <ReleaseList tint={tint} {...{releases}} />}
       {live.length && <LiveList tint={tint} {...{live}} />}
       {videos.length && <VideosList tint={tint} {...{videos}} />}
     </article>

@@ -34,6 +34,8 @@ const Live = ({
 
   {!title && <Helmet base={{href: '/404'}} />}
 
+  <Helmet meta={[{name: 'og:image', content: `http://maps.googleapis.com/maps/api/staticmap?center=${venueLocation.lat},${venueLocation.lon}&zoom=13&scale=2&size=300x300&maptype=terrain&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0x8ce3b6%7Clabel:%7C${venueLocation.lat},${venueLocation.lon}`}]} />
+
   <Main>
     <Map title={venueName} tint={tint} {...venueLocation} />
   </Main>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Color from 'color';
 
 import VideoThumbnail from '../VideoThumbnail';
 
@@ -10,7 +11,7 @@ const VideosList = ({
 }) =>
 
 <section className='VideosList'>
-  <h2>Videos</h2>
+  <h2 style={{backgroundColor: Color(tint).lighten(0.16).hexString()}}>Videos</h2>
   <ul>
     {videos.map(video =>
       <VideoThumbnail key={video.slug} tint={tint} {...video} />

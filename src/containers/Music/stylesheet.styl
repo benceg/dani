@@ -2,6 +2,7 @@
 
   .Main
     overflow hidden
+    line-height 0
 
     @media (orientation landscape)
       position fixed
@@ -67,9 +68,15 @@
       padding-right 0
       margin-top 0
 
+      @media (orientation landscape)
+        margin-top 45%
+
+      @media (orientation portrait)
+        padding-top 0
+
     section
       margin 0 auto
-      margin-top 6%
+      margin-top 5px
 
       &:first-of-type
         margin-top 0
@@ -80,7 +87,9 @@
         list-style none
 
     h2
-      font-family 'ChunkFive', sans-serif
-      font-size 32px
+      font-family TitleFont, sans-serif
+      text-align center
+      font-size 26px
       line-height 1
-      margin 0 0 2.5% 6%
+      padding 3.5% 6%
+      margin 0 0 2.5%

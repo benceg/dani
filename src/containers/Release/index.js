@@ -37,6 +37,8 @@ const Release = ({
 
   {!title && <Helmet base={{href: '/404'}} />}
 
+  <Helmet meta={[{name: 'og:image', content: `${get(head(images), 'fields.file.url')}?fit=thumb&w=600&h=600`}]} />
+
   <Helmet
     htmlAttributes={{'data-theme': (Color(colour).dark() ? 'dark' : 'light')}}
     style={[

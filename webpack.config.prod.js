@@ -61,6 +61,9 @@ module.exports = {
       jeet(),
       nib(),
       autoprefixer()
-    ]
+    ],
+		import: [
+			path.resolve(__dirname, './src/globals/globals.styl')
+		]
   }
 };

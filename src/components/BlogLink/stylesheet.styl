@@ -34,11 +34,14 @@
 
   date
     width 1%
-    background-color #222
+    background-color white
     color inherit
     font-size 12px
     text-align center
     padding 5px
+
+    [data-theme="light"] &
+      background-color #222
 
     &:before
       transform-origin 100% 0
@@ -57,10 +60,13 @@
       font-size 1.4285em
 
   .details
-    color #222
+    color white
     padding 5px 10px
     font-family 'ChunkFive', sans-serif
     transition color 0.3s
+
+    [data-theme="light"] &
+      color #222
 
     &:before
       content ''
@@ -69,11 +75,14 @@
       left 0
       bottom 0
       right 0
-      background #222
+      background-color white
       z-index 0
       transform scale3d(0,1,1)
       transition transform 0.3s
       transform-origin 0 0
+
+      [data-theme="light"] &
+        background-color #222
 
     h3
       font-size 17px
@@ -84,7 +93,7 @@
 
     .readingTime
       font-family 'Roboto', sans-serif
-      font-size 11px
+      font-size 12px
       padding 3px 0
       line-height 1
       margin 0

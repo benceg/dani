@@ -24,7 +24,7 @@ const BlogLink = ({
   </date>
   <div className='details'>
     <h3>{title}</h3>
-    <div className='readingTime'>About a {Math.ceil(article.split(' ').length / 300)} minute read</div>
+    <div className='readingTime'>A {Math.ceil(article.split(' ').length / 300)}-minute read</div>
   </div>
 </Link>
 

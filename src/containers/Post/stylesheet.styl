@@ -3,14 +3,26 @@
   .Main
 
     @media (orientation landscape)
-      width 80%
+      width 70%
+
+    .hero
+      @media (orientation landscape)
+        display none
+
+    img
+      max-width 100%
 
     article
-      max-width 600px
+      max-width 720px
       margin 6% auto
+      padding 0 6%
+
+      a
+        color #222
+        text-decoration underline
 
       h1
-        font-family 'ChunkFive', sans-serif
+        font-family TitleFont, sans-serif
         font-size 56px
         text-align center
         margin 0 0 0.35em
@@ -34,10 +46,48 @@
           &:first-of-type
             text-indent 0
 
+          img:only-child
+            margin-left -1.5em
+
       .comments
         margin-top 4em
+        color #222
+
+        a
+          color #222
 
   .Sidebar
 
+    img
+      max-width 100%
+
+    .sidebarHero
+      @media (orientation portrait)
+        display none
+
     @media (orientation landscape)
-      width 20%
+      width 30%
+
+      .fade
+        left 70%
+
+      .BlogList
+        margin-top 0
+
+        .list
+          padding-left 0
+
+    @media (orientation portrait)
+      margin-bottom 30px
+
+    &.no-image .related
+      margin-top 60%
+
+    .related
+      margin-top 6%
+
+      h4
+        font-family TitleFont, sans-serif
+        font-size 20px
+        margin 0 0 6%
+        letter-spacing 0.5px

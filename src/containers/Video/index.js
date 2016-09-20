@@ -34,6 +34,8 @@ const Video = ({
 
   {!title && <Helmet base={{href: '/404'}} />}
 
+  <Helmet meta={[{name: 'og:image', content: `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}]} />
+
   <Sidebar tint={tint} fade={true}>
     <article>
       <h1>{title}</h1>

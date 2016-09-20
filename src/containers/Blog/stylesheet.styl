@@ -1,5 +1,25 @@
 .Blog
 
+  h1
+    font-size 72px
+    line-height 1.2
+    margin 0 0 1em
+    font-weight normal
+    font-family TitleFont, sans-serif
+
+    @media (orientation landscape)
+
+      @media (max-width 1280px)
+        font-size 54px
+
+      @media (max-width 768px)
+        font-size 42px
+        margin-bottom 0.5em
+
+    @media (orientation portrait)
+      font-size 42px
+      margin 0 0 0.5em
+
   .Main
     overflow hidden
 
@@ -42,15 +62,7 @@
       letter-spacing 0.75px
 
       @media (orientation portrait)
-        position relative
-        bottom auto
-        right auto
-        line-height 1.5em
-        padding 4% 6%
-
-        [data-theme='light'] &
-          background #222
-          margin 0
+        display none
 
       div
         &:empty
@@ -87,7 +99,7 @@
       width 100%
       padding 6%
       font-size 12px
-      font-family 'Roboto', sans-serif
+      font-family BodyFont, sans-serif
       color #222
       font-weight 700
       text-transform uppercase

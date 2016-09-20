@@ -7,6 +7,7 @@ import get from 'lodash/get';
 import { fetchContent } from './actions';
 
 import ReactMarkdown from 'react-markdown';
+import Helmet from 'react-helmet';
 
 import AppView from '../../components/AppView';
 import Main from '../../components/Main';
@@ -26,6 +27,8 @@ const HomePage = ({
 }) =>
 
 <AppView className='HomePage' tint={tint} title={title}>
+
+  <Helmet meta={[{name: 'og:image', content: `${get(image, 'fields.file.url')}?fit=thumb&w=600&h=600`}]} />
 
   <Main>
     <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
