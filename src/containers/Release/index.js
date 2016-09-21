@@ -17,6 +17,7 @@ import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
 import Track from '../../components/Track';
+import Image from '../../components/Image';
 
 import routerLink from '../../helpers/routerLink';
 
@@ -33,7 +34,7 @@ const Release = ({
   tracklist
 }) =>
 
-<AppView className='Release' tint={colour || tint} title={title || Release}>
+<AppView className='Release' tint={colour || tint} title={title}>
 
   {!title && <Helmet base={{href: '/404'}} />}
 
@@ -47,7 +48,7 @@ const Release = ({
   />
 
   <Main>
-    <img src={`${get(head(images), 'fields.file.url')}?w=1920&h=1080&q=85`} />
+    <Image alt={title} src={get(head(images), 'fields.file.url')} />
   </Main>
 
   <Sidebar tint={colour || tint} fade={true}>

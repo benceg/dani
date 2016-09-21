@@ -12,6 +12,7 @@ import Helmet from 'react-helmet';
 import AppView from '../../components/AppView';
 import Main from '../../components/Main';
 import Sidebar from '../../components/Sidebar';
+import Image from '../../components/Image';
 
 import routerLink from '../../helpers/routerLink';
 
@@ -31,7 +32,7 @@ const HomePage = ({
   <Helmet meta={[{name: 'og:image', content: `${get(image, 'fields.file.url')}?fit=thumb&w=600&h=600`}]} />
 
   <Main>
-    <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
+    <Image alt={title} src={get(image, 'fields.file.url')} />
   </Main>
 
   <Sidebar tint={tint} fade={true}>

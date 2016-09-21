@@ -30,7 +30,7 @@ const Video = ({
   details
 }) =>
 
-<AppView className='Video' tint={tint} title={title || 'Video'}>
+<AppView className='Video' tint={tint} title={title}>
 
   {!title && <Helmet base={{href: '/404'}} />}
 

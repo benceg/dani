@@ -38,7 +38,7 @@ const Blog = ({
   <Helmet meta={[{name: 'og:image', content: `${get(image, 'fields.file.url')}?fit=thumb&w=600&h=600`}]} />
 
   <Main>
-    <Image src={get(image, 'fields.file.url')} />
+    <Image alt='Blog' src={get(image, 'fields.file.url')} />
     {body &&
       <blockquote>
         {body.split("\n").map((line, index) =>

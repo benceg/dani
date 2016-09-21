@@ -27,12 +27,12 @@ const Image = ({
         width,
         height
       }, index) =>
-        <MediaQuery minWidth={sizes[index+1] ? breakpoint : 0} maxWidth={sizes[index-1] ? sizes[index-1].breakpoint : Infinity}>
+        <MediaQuery minDeviceWidth={sizes[index + 1] ? breakpoint : 0} maxDeviceWidth={sizes[index - 1] ? sizes[index - 1].breakpoint : Infinity}>
           <img alt={alt} title={title} className={className} src={`${src}?fit=thumb&w=${width}&h=${height}`} />
         </MediaQuery>
       )
     :
-      sizes.slice(0,1).map(({
+      sizes.slice(sizes.length - 1).map(({
         breakpoint,
         width,
         height

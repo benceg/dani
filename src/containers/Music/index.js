@@ -14,6 +14,7 @@ import Sidebar from '../../components/Sidebar';
 import ReleaseList from '../../components/ReleaseList';
 import LiveList from '../../components/LiveList';
 import VideosList from '../../components/VideosList';
+import Image from '../../components/Image';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
@@ -35,7 +36,7 @@ const Music = ({
   <Helmet meta={[{name: 'og:image', content: `${get(image, 'fields.file.url')}?fit=thumb&w=600&h=600`}]} />
 
   <Main>
-    <img src={`${get(image, 'fields.file.url')}?w=1920&h=1080`} />
+    <Image alt={title} src={get(image, 'fields.file.url')} />
     {body &&
       <blockquote>
         {body.split("\n").map((line, index) =>
