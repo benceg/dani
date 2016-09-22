@@ -2,8 +2,10 @@ import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
 import compression from 'compression';
+import bodyParser from 'body-parser';
 
 import middleware from './middleware';
+import sendgrid from './sendgrid';
 
 const app = express();
 
@@ -11,6 +13,8 @@ const ip = process.env.IP || '0.0.0.0';
 const port = process.env.PORT || 3000;
 
 app.use(compression());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 if (process.env.NODE_ENV === 'development') {
 
@@ -42,6 +46,8 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static(path.resolve(__dirname, '../assets')));
 
 app.get('*', middleware);
+
+app.post('/send', sendgrid);
 
 app.listen(port, ip, (err) => {
 	if(err) {

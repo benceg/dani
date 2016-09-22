@@ -10,6 +10,7 @@ import Video from './containers/Video';
 import Writing from './containers/Writing';
 import Blog from './containers/Blog';
 import Post from './containers/Post';
+import Contact from './containers/Contact';
 
 export default (
 	<Route>
@@ -27,6 +28,9 @@ export default (
 			<IndexRoute component={Blog} />
 			<Route path='page/:page' component={Blog} />
 			<Route path=':slug' component={Post} />
+		</Route>
+		<Route path='contact'>
+		 	<IndexRoute component={Contact} />
 		</Route>
 	</Route>
 );

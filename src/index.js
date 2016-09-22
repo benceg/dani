@@ -1,5 +1,3 @@
-import 'core-js/fn/promise';
-
 import React from 'react';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';

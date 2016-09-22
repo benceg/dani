@@ -10,6 +10,8 @@ module.exports = {
 	entry: [
 		'react-hot-loader/patch',
 		'webpack-hot-middleware/client',
+		'whatwg-fetch',
+		'babel-polyfill',
 		path.resolve(__dirname, 'src')
 	],
 	output: {

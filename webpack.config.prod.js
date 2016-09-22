@@ -8,7 +8,11 @@ const jeet = require('jeet');
 const nib = require('nib');
 
 module.exports = {
-	entry: path.resolve(__dirname, 'src'),
+	entry: [
+		'whatwg-fetch',
+		'babel-polyfill',
+		path.resolve(__dirname, 'src')
+	],
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
