@@ -1,6 +1,8 @@
 import React from 'react';
 import { HOC } from 'formsy-react';
 
+import ReactAutosizeTextarea from 'react-autosize-textarea';
+
 const Textarea = ({
   name,
   label,
@@ -14,7 +16,7 @@ const Textarea = ({
 <div className={(showRequired() ? 'required' : showError() ? 'error' : null)}>
   <label>{label}</label>
   <span className='field'>
-    <textarea name={name} value={getValue()} onChange={(e) => setValue(e.target.value)} />
+    <ReactAutosizeTextarea name={name} value={getValue()} onChange={(e) => setValue(e.target.value)} rows={5} />
   </span>
   <span className='errorMessage'>{getErrorMessage()}</span>
 </div>

@@ -8,6 +8,8 @@ import {
   Textarea
 } from '../Inputs';
 
+if (process.env.WEBPACK) require('./stylesheet.styl');
+
 class ContactForm extends Component {
 
   constructor() {
@@ -37,6 +39,7 @@ class ContactForm extends Component {
 
     return (
       <Form
+        className='ContactForm'
         action={action}
         method={method}
         encType='application/x-www-form-urlencoded'
@@ -49,10 +52,13 @@ class ContactForm extends Component {
         <Text name='subject' label='Subject' value='' placeholder='Subject' validationError='This field is required' required />
         <Textarea name='message' label='Message' value='' placeholder='Message' validationError='This field is required' required />
         <div className='submit'>
-          {(process.env.WEBPACK
-            ? <button type='submit' disabled={!canSubmit}>Submit</button>
-            : <input type='submit' value='Submit' />
-          )}
+          <label />
+          <span>
+            {(process.env.WEBPACK
+              ? <button type='submit' disabled={!canSubmit}>Send</button>
+              : <input type='submit' value='Send' />
+            )}
+          </span>
         </div>
       </Form>
     )

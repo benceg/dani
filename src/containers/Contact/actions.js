@@ -34,10 +34,6 @@ export function sendForm(fields) {
       },
       body: JSON.stringify(fields)
     })
-      .then(response => {
-        console.log(response);
-        dispatch(formSent());
-      })
       .then(({status}) => status === 202 ? dispatch(formSent()) : dispatch(formError()))
       .catch(() => dispatch(formError()));
   }

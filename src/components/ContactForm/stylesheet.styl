@@ -1,0 +1,63 @@
+.ContactForm
+  display table
+  width 100%
+
+  > div
+    display table-row
+
+    > label
+    > span
+      display table-cell
+      vertical-align top
+
+    > label
+      width 1%
+      padding-left 0
+      padding 0.75em 1.5em 0.25em 0.25em
+      font-size 14px
+
+    > span
+      line-height 0
+      padding 0.25em 0 0.25em 0.25em
+
+  input[type="text"]
+  input[type="email"]
+  textarea
+    outline 0
+    width 100%
+    border 0
+    background-color white
+    color #444
+    font-family BodyFont
+    padding 0.75em
+    margin 0
+    transition box-shadow 0.15s
+    font-size 13px
+
+    &:focus
+      box-shadow inset 2px 2px 0 rgba(black, 0.25)
+
+  button
+    display inline-block
+    border-radius 0
+    cursor pointer
+    font-family BodyFont
+    padding 0.75em 0
+    width 100%
+    text-align center
+    font-size 12px
+    border 0
+    color white
+    text-transform uppercase
+    font-weight bold
+    letter-spacing 0.75px
+    transition opacity 0.15s
+    border-radius 0 0 8px 8px
+    transition opacity 0.2s, background-color 0.2s
+
+    &:hover
+      background-color #222
+
+    &[disabled]
+      opacity 0.2
+      cursor default

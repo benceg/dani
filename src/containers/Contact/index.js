@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 import head from 'lodash/head';
 import get from 'lodash/get';
+import Color from 'color';
 import { componentWillMount } from 'react-lifecycle-decorators';
 
 import {
@@ -24,7 +25,7 @@ import routerLink from '../../helpers/routerLink';
 
 if (process.env.WEBPACK) require('./stylesheet.styl');
 
-const tint = '#5b5867';
+const tint = '#41396b';
 
 const handleSubmit = (dispatch) =>
   (fields) =>
@@ -42,7 +43,10 @@ const Contact = ({
 
 <AppView className='Contact' tint={tint} title={title}>
 
-  <Helmet meta={[{name: 'og:image', content: `${get(image, 'fields.file.url')}?fit=thumb&w=600&h=600`}]} />
+  <Helmet
+    meta={[{name: 'og:image', content: `${get(image, 'fields.file.url')}?fit=thumb&w=600&h=600`}]}
+    style={[{cssText: `.Contact [type="submit"] { background-color: ${Color(tint).darken(0.5).hexString()}; }`}]}
+  />
 
   <Main>
     <Image alt={title} src={get(image, 'fields.file.url')} />
@@ -54,9 +58,9 @@ const Contact = ({
       <section>
         <ReactMarkdown source={body || ''} escapeHtml={true} renderers={{Link: routerLink}} />
       </section>
-      {error && <div className='error-message'>Sorry, there was a problem sending your form.</div>}
+      {error && <p className='error-message'>Sorry, there was a problem sending your form.</p>}
+      {sent && <p className='success-message'>Thank you for your message.</p>}
       {!sent && <ContactForm action='/send' method='post' handleSubmit={handleSubmit(dispatch)} />}
-      {sent && <div className='success-message'>Thank you for your message.</div>}
     </article>
   </Sidebar>
 
