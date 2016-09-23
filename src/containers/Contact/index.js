@@ -52,7 +52,7 @@ const Contact = ({
     <Image alt={title} src={get(image, 'fields.file.url')} />
   </Main>
 
-  <Sidebar tint={tint} fade={true}>
+  <Sidebar tint={tint}>
     <article>
       <h1>{title}</h1>
       <section>

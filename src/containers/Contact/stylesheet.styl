@@ -32,6 +32,18 @@
       img
         height 100vh
 
+      @media (max-width 567px)
+        position relative
+        width auto
+        height auto
+        overflow hidden
+        float none
+
+        img
+          height auto
+          max-width 100%
+          width 100%
+
     @media (orientation portrait)
       position relative
       left 0
@@ -46,3 +58,15 @@
       transform translateX(-50%)
       user-select none
       pointer-events none
+
+  .Sidebar
+
+    @media (orientation landscape)
+      @media (max-width 567px)
+        float none
+        display block
+        width auto
+
+        article
+          margin-top 0
+          padding-top 6%
