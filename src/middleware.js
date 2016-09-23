@@ -14,8 +14,6 @@ import routes from './routes';
 
 const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 
-const store = createStoreWithMiddleware(reducers);
-
 export default (req, res) => {
 	match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
 
@@ -28,6 +26,8 @@ export default (req, res) => {
 			res.redirect(302, redirectLocation.pathname + redirectLocation.search);
 
 		} else if (renderProps) {
+
+			const store = createStoreWithMiddleware(reducers);
 
 			loadOnServer({ ...renderProps, store }).then(() => {
 
