@@ -3,7 +3,7 @@ const { Email, Content, Mail } = mail;
 
 import template from './emails/standard';
 
-const to = process.env.DB_TO_EMAIL || 'bceglowski@gmail.com';
+const to = process.env.DB_TO_EMAIL;
 const sg = sendgrid(process.env.DB_SENDGRID_API_KEY);
 
 const respond = (res) =>
