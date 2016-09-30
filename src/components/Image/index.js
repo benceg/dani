@@ -27,7 +27,7 @@ const Image = ({
         width,
         height
       }, index) =>
-        <MediaQuery key={`${src}${width}${height}`} minDeviceWidth={sizes[index + 1] ? breakpoint : 0} maxDeviceWidth={sizes[index - 1] ? sizes[index - 1].breakpoint : Infinity}>
+        <MediaQuery key={`${src}${width}${height}`} minDeviceWidth={sizes[index + 1] ? breakpoint : 0} maxDeviceWidth={sizes[index - 1] ? sizes[index - 1].breakpoint : null}>
           <img alt={alt} title={title} className={className} src={`${src}?fit=thumb&w=${width}&h=${height}`} />
         </MediaQuery>
       )
