@@ -32,6 +32,20 @@ module.exports = {
 		  comments: false,
 			sourceMap: false
 		}),
+		new webpack.LoaderOptionsPlugin({
+		  options: {
+				stylus: {
+					use: [
+			      jeet(),
+			      nib(),
+			      autoprefixer()
+			    ],
+					import: [
+						path.resolve(__dirname, './src/globals/globals.styl')
+					]
+				}
+		  }
+		}),
 		new CopyWebpackPlugin([
 			{
 				from: path.resolve(__dirname, 'src', 'assets'),
@@ -59,15 +73,5 @@ module.exports = {
 				include: path.resolve(__dirname, 'src')
 			}
 		]
-	},
-  stylus: {
-    use: [
-      jeet(),
-      nib(),
-      autoprefixer()
-    ],
-		import: [
-			path.resolve(__dirname, './src/globals/globals.styl')
-		]
-  }
+	}
 };

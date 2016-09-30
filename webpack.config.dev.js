@@ -27,6 +27,20 @@ module.exports = {
 				NODE_ENV: JSON.stringify('development'),
 				WEBPACK: true
 			}
+		}),
+		new webpack.LoaderOptionsPlugin({
+		  options: {
+				stylus: {
+					use: [
+			      jeet(),
+			      nib(),
+			      autoprefixer()
+			    ],
+					import: [
+						path.resolve(__dirname, './src/globals/globals.styl')
+					]
+				}
+		  }
 		})
 	],
 	module: {
@@ -46,16 +60,6 @@ module.exports = {
 				loader: 'style!css!stylus',
 				include: path.resolve(__dirname, 'src')
 			}
-		]
-	},
-	stylus: {
-		use: [
-      jeet(),
-      nib(),
-      autoprefixer()
-    ],
-		import: [
-			path.resolve(__dirname, './src/globals/globals.styl')
 		]
 	}
 };
