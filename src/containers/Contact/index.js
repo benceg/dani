@@ -1,7 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
-import head from 'lodash/head';
 import get from 'lodash/get';
 import Color from 'color';
 import { componentWillMount } from 'react-lifecycle-decorators';
@@ -34,7 +32,6 @@ const handleSubmit = (dispatch) =>
 const Contact = ({
   body,
   image,
-  slug,
   title,
   error,
   sent,

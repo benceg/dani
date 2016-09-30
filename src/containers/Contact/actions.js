@@ -14,7 +14,7 @@ const ENDPOINT = '/send';
 
 export function fetchContent() {
   return (dispatch, getState) => {
-    if (get(getState(), 'writing.loaded') === false) {
+    if (get(getState(), 'contact.loaded') === false) {
       dispatch(requestContent());
       return client.getEntries({ 'sys.id': '1GzFuUdAr2GkkCYwCau44c', include: 10 })
         .then(response => get(head(get(response, 'items')), 'fields'))
