@@ -1,6 +1,8 @@
 import React from 'react';
 
-import MediaQuery from 'react-responsive'
+import MediaQuery from 'react-responsive';
+
+import LazyImage from '../LazyImage';
 
 const sizes = [
   { breakpoint: 1681, width: 1920, height: 1280, quality: 80 },
@@ -28,17 +30,30 @@ const Image = ({
         height,
         quality
       }, index) =>
-        <MediaQuery key={`${src}${width}${height}`} minDeviceWidth={sizes[index + 1] ? breakpoint : 0} maxDeviceWidth={sizes[index - 1] ? sizes[index - 1].breakpoint : null}>
-          <img alt={alt} title={title} className={className} src={`${src}?fit=thumb&w=${width}&h=${height}&q=${quality}`} />
+        <MediaQuery
+          key={`${src}${width}${height}`}
+          minDeviceWidth={sizes[index + 1] ? breakpoint : 0}
+          maxDeviceWidth={sizes[index - 1] ? sizes[index - 1].breakpoint : null}
+        >
+          <LazyImage {...{alt, title, className, width, height, quality, src}} />
         </MediaQuery>
       )
     :
       sizes.slice(sizes.length - 1).map(({
         breakpoint,
         width,
-        height
+        height,
+        quality
       }, index) =>
-        <img key={`${src}${width}${height}`} alt={alt} title={title} className={className} src={`${src}?fit=thumb&w=${width}&h=${height}`} />
+        <img
+          key={`${src}${width}${height}`}
+          width={width}
+          height={height}
+          alt={alt}
+          title={title}
+          className={className}
+          src={`${src}?fit=thumb&w=${width}&h=${height}`}
+        />
       )
   )}
 </span>

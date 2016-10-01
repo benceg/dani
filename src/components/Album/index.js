@@ -23,7 +23,7 @@ const Album = ({
 
     <div className='disc' style={{backgroundColor: colour}}>
       <figure>
-        <img src={`${get(head(images), 'fields.file.url')}?fit=thumb&w=600&h=600&q=80`} />
+        <img src={`${get(head(images), 'fields.file.url')}?fit=thumb&w=600&h=600&q=80`} style={{backgroundColor: colour}} />
         <span className='record'>
           <span className='record-label' style={{backgroundColor: Color(colour).darken(0.1).hexString()}} />
         </span>

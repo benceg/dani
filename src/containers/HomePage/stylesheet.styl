@@ -31,6 +31,7 @@
 
       img
         height 100vh
+        width auto
 
     @media (orientation portrait)
       position relative
@@ -39,6 +40,7 @@
 
       img
         width 100%
+        height auto
 
     img
       position relative
@@ -48,10 +50,15 @@
       pointer-events none
 
   section
-    column-count 2
 
-    @media (max-width 1024px)
-      column-count auto
+    > div
+      column-count 2
+      column-gap 2em
+      column-fill balance
 
-    *:first-child
-      margin-top 0
+      @media (max-width 1024px)
+        column-count auto
+
+      p
+        margin-top 0
+        break-inside auto
