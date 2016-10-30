@@ -48,9 +48,9 @@ const Music = ({
 
   <Sidebar tint={tint} fade={true}>
     <article>
-      {releases.length && <ReleaseList tint={tint} {...{releases}} />}
-      {live.length && <LiveList tint={tint} {...{live}} />}
-      {videos.length && <VideosList tint={tint} {...{videos}} />}
+      {releases.length > 0 && <ReleaseList tint={tint} {...{releases}} />}
+      {live.length > 0 && <LiveList tint={tint} {...{live}} />}
+      {videos.length > 0 && <VideosList tint={tint} {...{videos}} />}
     </article>
   </Sidebar>
 
