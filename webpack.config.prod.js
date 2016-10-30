@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer-stylus');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const Visualizer = require('webpack-visualizer-plugin');
 const jeet = require('jeet');
@@ -46,12 +45,6 @@ module.exports = {
 				}
 		  }
 		}),
-		new CopyWebpackPlugin([
-			{
-				from: path.resolve(__dirname, 'src', 'assets'),
-				to: path.resolve(__dirname, 'dist', 'assets')
-			}
-		]),
 		new ExtractTextPlugin('bundle.css'),
 		new Visualizer()
 	],
